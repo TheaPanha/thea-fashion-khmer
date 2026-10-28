@@ -1439,7 +1439,8 @@
     <div class="sheet" role="dialog" aria-modal="true">
       <div class="sheet-handle"></div>
       <h3>Admin</h3>
-      <p class="ad-sub">សម្រាប់ម្ចាស់ហាងប៉ុណ្ណោះ</p>
+      <p class="ad-sub">សម្រាប់ម្ចាស់ហាងប៉ុណ្ណោះ · Login តាម Supabase</p>
+      <input id="admin-email" class="ad-input" type="email" placeholder="អ៊ីមែល Admin" autocomplete="username" />
       <input id="admin-pass" class="ad-input" type="password" placeholder="ពាក្យសម្ងាត់" autocomplete="current-password" />
       <div class="ad-err" id="admin-err"></div>
       <button class="sheet-confirm" id="admin-go" type="button">ចូល</button>
@@ -1457,6 +1458,7 @@
 
   <button class="to-top" id="to-top" aria-label="ឡើងលើ"><i class="fa-solid fa-chevron-up"></i></button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 
 // ដាក់ username Telegram របស់ហាងនៅទីនេះ (មិនបាច់ដាក់ @)
@@ -1562,15 +1564,16 @@ const SETTINGS = {        // ការកំណត់រចនា និងហ�
 };
 // ===================================================================
 
-// ---------- Admin (ម្ចាស់ហាង) ----------
-// ពាក្យសម្ងាត់លំនាំដើម៖ admin123 (ត្រូវប្តូរ! មើលក្នុង Admin → ប្តូរពាក្យសម្ងាត់)
-const ADMIN_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+// ---------- Supabase + Admin ----------
+const SUPABASE_URL = "https://emczthnufoklqitffrjv.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_DVrYO-yIUttxoBaUWFng3w_ChcCs7Xo";
+const ADMIN_UID = "fead1e4b-f44b-45ea-919e-a87f06bad3f0";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const ORIG_PRODUCTS = PRODUCTS.map((p) => ({ ...p }));
 let adminOn = false;
-try { adminOn = localStorage.getItem("adminOn") === "1"; } catch (e) {}
 let adminData = { edits: {}, hidden: [...HIDDEN], sale: { ...MANUAL_SALE }, stock: { ...STOCK }, settings: {}, added: [], deleted: [] };
 let adminImages = {};   // រូបដែលម្ចាស់ហាងដាក់ { លេខទំនិញ: dataURL } (លើឧបករណ៍នេះ)
-const photoOf = (n) => (adminOn && adminImages[n]) ? adminImages[n] : `Example${n}.jpg`;
+const photoOf = (n) => adminImages[n] || `Example${n}.jpg`;
 function loadAdminData() {
   PRODUCTS.length = ORIG_PRODUCTS.length;      // លុបទំនិញថ្មីដែលបានបន្ថែមពីមុន (ការពារស្ទួន)
   try {
@@ -1581,12 +1584,12 @@ function loadAdminData() {
   Object.entries(adminData.edits).forEach(([k, v]) => { if (PRODUCTS[k]) Object.assign(PRODUCTS[k], v); });
   (adminData.added || []).forEach((a) => PRODUCTS.push({ name: a.name, place: a.place, price: a.price }));
 }
-if (adminOn) loadAdminData();
-let settings = { ...SETTINGS, ...(adminOn ? adminData.settings : {}) };
-const rebuildSettings = () => { settings = { ...SETTINGS, ...(adminOn ? adminData.settings : {}) }; };
+loadAdminData();
+let settings = { ...SETTINGS, ...adminData.settings };
+const rebuildSettings = () => { settings = { ...SETTINGS, ...adminData.settings }; };
 const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-const hiddenSet = () => new Set(adminOn ? [...adminData.hidden, ...(adminData.deleted || [])] : HIDDEN);
-const manualSale = () => (adminOn ? adminData.sale : MANUAL_SALE);
+const hiddenSet = () => new Set([...adminData.hidden, ...(adminData.deleted || [])]);
+const manualSale = () => adminData.sale;
 
 const formatRiel = (n) => n.toLocaleString("en-US") + " ៛";
 
@@ -1627,7 +1630,7 @@ window.addEventListener("scroll", onScrollUI, { passive: true });
 onScrollUI();
 
 // ---------- ស្តុក + ស្ថិតិ ----------
-const stockMap = () => (adminOn ? adminData.stock : STOCK);
+const stockMap = () => adminData.stock;
 function stockOf(idx) {
   const v = stockMap()[idx + 1];
   return v === undefined || v === "" || v === null ? null : Number(v);   // null = គ្មានកំណត់
@@ -2005,7 +2008,7 @@ document.getElementById("search").addEventListener("input", (e) => {
 document.getElementById("sort").addEventListener("change", (e) => { sortBy = e.target.value; render(); });
 
 // ---------- ផ្ទាំងផ្សព្វផ្សាយធំ 3 ----------
-const bannerImg = (n) => (adminOn && adminImages["b" + n]) ? adminImages["b" + n] : `Largebillboard${n}.jpg`;
+const bannerImg = (n) => adminImages["b" + n] || `Largebillboard${n}.jpg`;
 function bannerAction(b) {
   const t = (b && b.target) || "all";
   if (/^https?:/i.test(t)) { window.open(t, "_blank", "noopener"); return; }
@@ -2142,22 +2145,31 @@ async function sha256(text) {
 const adminLogin = document.getElementById("admin-login");
 const adminSheet = document.getElementById("admin-sheet");
 const adminPass = document.getElementById("admin-pass");
+const adminEmail = document.getElementById("admin-email");
 const adminErr = document.getElementById("admin-err");
 
 function openAdminLogin() {
   if (adminOn) { openAdminPanel(); return; }
   adminErr.textContent = ""; adminPass.value = "";
   adminLogin.classList.add("open");
-  setTimeout(() => adminPass.focus(), 60);
+  setTimeout(() => adminEmail.focus(), 60);
 }
 async function tryAdminLogin() {
-  try {
-    if ((await sha256(adminPass.value)) !== ADMIN_HASH) { adminErr.textContent = "ពាក្យសម្ងាត់មិនត្រឹមត្រូវ"; return; }
-  } catch (e) { adminErr.textContent = "ត្រូវការគេហទំព័រ https ទើបចូលបាន"; return; }
-  try { localStorage.setItem("adminOn", "1"); } catch (e) {}
+  adminErr.textContent = "កំពុង Login...";
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: adminEmail.value.trim(),
+    password: adminPass.value
+  });
+  if (error || !data.user || data.user.id !== ADMIN_UID) {
+    if (data && data.user && data.user.id !== ADMIN_UID) await supabaseClient.auth.signOut();
+    adminErr.textContent = error ? "Login មិនបានទេ។ សូមពិនិត្យអ៊ីមែល/ពាក្យសម្ងាត់" : "គណនីនេះមិនមានសិទ្ធិ Admin";
+    return;
+  }
   adminOn = true;
-  loadAdminData();
+  await loadSupabaseState();
+  await persistRemoteState();
   refreshSite();
+  adminLogin.classList.remove("open");
   openAdminPanel();
 }
 document.getElementById("admin-go").addEventListener("click", tryAdminLogin);
@@ -2177,6 +2189,7 @@ function saveAdmin() {
   adminData.added = PRODUCTS.slice(ORIG_PRODUCTS.length).map((p) => ({ name: p.name, place: p.place, price: p.price }));
   try { localStorage.setItem("adminData", JSON.stringify(adminData)); } catch (e) {}
   flashSaved();
+  if (adminOn) persistRemoteState();
 }
 function refreshSite() { SALE = buildSale(); render(); }
 
@@ -2223,18 +2236,72 @@ const idb = {
   get(k) { return this.open().then((db) => new Promise((res, rej) => { const q = db.transaction("kv").objectStore("kv").get(k); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); })); },
   set(k, v) { return this.open().then((db) => new Promise((res, rej) => { const t = db.transaction("kv", "readwrite"); t.objectStore("kv").put(v, k); t.oncomplete = () => res(true); t.onerror = () => rej(t.error); })); }
 };
-function saveImages() {
-  let ok = false;
-  try { localStorage.setItem("adminImages", JSON.stringify(adminImages)); ok = true; } catch (e) {}
-  idb.set("adminImages", adminImages).catch(() => { if (!ok) adToast("រក្សាទុកលើឧបករណ៍មិនបាន រូបនឹងបាត់ពេលបិទទំព័រ"); });
-  return true;   // រូបបង្ហាញភ្លាមៗ យ៉ាងហោចណាស់ក្នុងពេលកំពុងប្រើ
+let remoteSaveQueue = Promise.resolve();
+function persistRemoteState() {
+  if (!adminOn) return Promise.resolve(false);
+  const snapshot = { adminData, adminImages };
+  remoteSaveQueue = remoteSaveQueue.then(async () => {
+    const { error } = await supabaseClient.from("shop_state").upsert({
+      id: 1, data: snapshot, updated_at: new Date().toISOString()
+    }, { onConflict: "id" });
+    if (error) { adToast("រក្សាទុក Cloud មិនបាន: " + error.message); throw error; }
+    return true;
+  }).catch((e) => { console.error("Supabase save failed", e); return false; });
+  return remoteSaveQueue;
 }
-if (adminOn) idb.get("adminImages").then((d) => {
-  if (!d || typeof d !== "object") return;
-  let ch = false;
-  Object.keys(d).forEach((k) => { if (!adminImages[k]) { adminImages[k] = d[k]; ch = true; } });
-  if (ch) refreshSite();
-}).catch(() => {});
+function dataUrlToBlob(dataUrl) {
+  return fetch(dataUrl).then((r) => r.blob());
+}
+async function uploadImagesToStorage() {
+  if (!adminOn) return;
+  for (const key of Object.keys(adminImages)) {
+    const value = adminImages[key];
+    if (typeof value !== "string" || !value.startsWith("data:image/")) continue;
+    const path = String(key).startsWith("b") ? `banners/${String(key).slice(1)}.jpg` : `products/${key}.jpg`;
+    const blob = await dataUrlToBlob(value);
+    const { error } = await supabaseClient.storage.from("product-images").upload(path, blob, {
+      upsert: true, contentType: "image/jpeg", cacheControl: "3600"
+    });
+    if (error) throw error;
+    const { data } = supabaseClient.storage.from("product-images").getPublicUrl(path);
+    adminImages[key] = data.publicUrl;
+  }
+}
+function saveImages() {
+  try { localStorage.setItem("adminImages", JSON.stringify(adminImages)); } catch (e) {}
+  idb.set("adminImages", adminImages).catch(() => {});
+  if (adminOn) uploadImagesToStorage().then(() => {
+    try { localStorage.setItem("adminImages", JSON.stringify(adminImages)); } catch (e) {}
+    return persistRemoteState();
+  }).catch((e) => adToast("Upload រូបមិនបាន: " + (e.message || "សូមសាកម្ដងទៀត")));
+  return true;
+}
+async function deleteStoredImage(key) {
+  if (!adminOn) return;
+  const path = String(key).startsWith("b") ? `banners/${String(key).slice(1)}.jpg` : `products/${key}.jpg`;
+  const { error } = await supabaseClient.storage.from("product-images").remove([path]);
+  if (error) console.warn("Storage delete failed", error.message);
+}
+async function loadSupabaseState() {
+  const { data, error } = await supabaseClient.from("shop_state").select("data").eq("id", 1).maybeSingle();
+  if (error) { console.warn("Supabase load failed", error.message); return; }
+  const state = data && data.data;
+  if (!state || !state.adminData) return;
+  adminData = { edits: {}, hidden: [], sale: {}, stock: { ...STOCK }, settings: {}, added: [], deleted: [], ...state.adminData };
+  adminImages = state.adminImages && typeof state.adminImages === "object" ? state.adminImages : {};
+  try { localStorage.setItem("adminData", JSON.stringify(adminData)); localStorage.setItem("adminImages", JSON.stringify(adminImages)); } catch (e) {}
+  loadAdminData();
+  settings = { ...SETTINGS, ...adminData.settings };
+  rebuildSettings();
+  refreshSite(); applySettings(); renderPromo();
+}
+// Public visitors load the same cloud product data; admin rights still require Supabase Auth.
+supabaseClient.auth.getSession().then(async ({ data }) => {
+  const user = data && data.session && data.session.user;
+  if (user && user.id === ADMIN_UID) adminOn = true;
+  else if (user) await supabaseClient.auth.signOut();
+  await loadSupabaseState();
+}).catch((e) => console.warn("Supabase initialization failed", e));
 function downloadPhoto(n) {
   const data = adminImages[n];
   if (!data) return;
@@ -2526,7 +2593,7 @@ function openAdminPanel() {
       }
       if (n === PRODUCTS.length && n > ORIG_PRODUCTS.length) PRODUCTS.pop();   // ទំនិញថ្មីចុងក្រោយ → លុបចេញពិតប្រាកដ
       else if (!adminData.deleted.includes(n)) adminData.deleted.push(n);       // ផ្សេងទៀត → លុប (រក្សាលេខទំនិញដដែល)
-      delete adminImages[n]; delete adminData.stock[n]; delete adminData.sale[n];
+      deleteStoredImage(n); delete adminImages[n]; delete adminData.stock[n]; delete adminData.sale[n];
       adminData.hidden = adminData.hidden.filter((x) => x !== n);
       saveImages(); saveAdmin(); refreshSite(); stats();
       list.innerHTML = adminRows(document.getElementById("ad-search").value);
