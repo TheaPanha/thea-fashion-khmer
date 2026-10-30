@@ -656,92 +656,62 @@
   #sale-grid::-webkit-scrollbar { display: none; }
   #sale-grid .card { flex: 0 0 auto; width: 230px; }
   /* ---- Admin ---- */
-  .ad-input {
-    width: 100%; padding: 11px 12px; margin-bottom: 8px;
-    border: 1px solid var(--border); border-radius: 10px;
-    background: #fff; color: var(--ink); font-family: inherit; font-size: 16px;
-  }
-  .ad-sub { margin: -2px 0 14px; color: var(--muted); font-size: 13px; }
-  .ad-err { min-height: 20px; margin-bottom: 8px; color: #B8213F; font-size: 13px; }
-  .admin-sheet { max-width: 720px; }
-  .ad-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .ad-head h3 { margin: 0; }
-  .ad-x { border: none; background: var(--border); width: 34px; height: 34px; border-radius: 50%; font-size: 15px; cursor: pointer; }
-  .ad-stats { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
-  .ad-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
-  .ad-btn {
-    padding: 9px 14px; border-radius: 999px; border: 1.5px solid #1A1A1A;
-    background: transparent; color: #1A1A1A; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
-  }
-  .ad-btn:hover { background: #1A1A1A; color: #fff; }
-  .ad-btn.danger { border-color: #B8213F; color: #B8213F; }
-  .ad-btn.danger:hover { background: #B8213F; color: #fff; }
-  .ad-note { font-size: 12px; line-height: 1.6; color: var(--muted); background: rgba(185,138,62,0.12); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
-  .ad-code, .ad-hash {
-    width: 100%; height: 120px; margin-bottom: 10px; padding: 10px;
-    border: 1px solid var(--border); border-radius: 10px; font-family: monospace; font-size: 11px; background: #fff;
-  }
-  .ad-pw { margin-bottom: 10px; font-size: 13px; }
-  .ad-pw summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
-  .ad-list { max-height: 48vh; overflow-y: auto; }
-  .ad-row { padding: 12px 0; border-bottom: 1px solid var(--border); }
-  .ad-row.is-hidden { opacity: 0.5; }
-  .ad-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-  .ad-num { font-family: "Playfair Display", Georgia, serif; font-weight: 700; color: var(--clay); letter-spacing: 0.1em; }
-  .ad-hide { font-size: 13px; display: flex; align-items: center; gap: 6px; }
-  .ad-two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .ad-two label { font-size: 12px; color: var(--muted); }
-  .ad-two .ad-input { margin: 3px 0 0; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /* ---- Admin tabs & fields ---- */
-  .ad-tabs { display: flex; gap: 6px; margin: 4px 0 12px; border-bottom: 1px solid var(--border); }
-  .ad-tab {
-    flex: 1; padding: 10px 6px; border: none; background: none; cursor: pointer;
-    font-family: inherit; font-size: 14px; font-weight: 600; color: var(--muted);
-    border-bottom: 3px solid transparent; margin-bottom: -1px;
-  }
-  .ad-tab.active { color: #1A1A1A; border-bottom-color: var(--clay); }
-  .ad-label { font-size: 13px; font-weight: 600; color: var(--muted); margin: 6px 0 8px; }
-  .ad-swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
-  .ad-sw {
-    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
-    border: 3px solid #fff; box-shadow: 0 0 0 1.5px var(--border), 0 3px 8px rgba(0,0,0,0.18);
-  }
-  .ad-sw.on { box-shadow: 0 0 0 2.5px #1A1A1A, 0 3px 8px rgba(0,0,0,0.18); }
-  .ad-field { display: block; margin-bottom: 10px; font-size: 12px; color: var(--muted); }
-  .ad-field .ad-input { margin: 4px 0 0; }
-  .ad-field textarea.ad-input { min-height: 64px; resize: vertical; }
-  .ad-field input[type="color"] { width: 100%; height: 44px; padding: 3px; border-radius: 10px; border: 1px solid var(--border); background: #fff; margin-top: 4px; }
-  .ad-check { display: flex; align-items: center; gap: 8px; font-size: 14px; margin: 8px 0; color: var(--ink); }
-  .ad-check input { width: 18px; height: 18px; }
-  .ad-hint { font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /* ---- Admin: easier editing ---- */
-  .ad-saved {
-    margin-left: auto; margin-right: 10px; font-size: 12px; font-weight: 600; color: #3F7D5C;
-    background: rgba(63,125,92,0.12); padding: 4px 10px; border-radius: 999px;
-    opacity: 0; transition: opacity 0.25s ease;
-  }
-  .ad-saved.show { opacity: 1; }
-  .ad-filters { display: flex; gap: 6px; margin-bottom: 8px; }
-  .ad-filters button {
-    padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border);
-    background: #fff; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--ink);
-  }
-  .ad-filters button.on { background: #1A1A1A; border-color: #1A1A1A; color: #fff; }
-  .ad-list { max-height: 56vh; }
-  .ad-row { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: start; }
-  .ad-thumb {
-    width: 74px; height: 98px; object-fit: cover; border-radius: 10px;
-    background: #E9DBC0; box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-  }
-  .ad-main { min-width: 0; }
-  .ad-quick { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--muted); }
-  .ad-q {
-    padding: 5px 10px; border-radius: 999px; border: 1px solid #E8445F; background: #fff; color: #B8213F;
-    font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
-  }
-  .ad-q:hover { background: #E8445F; color: #fff; }
-  .ad-q.clr { border-color: var(--border); color: var(--muted); }
-  .ad-empty { text-align: center; padding: 30px 0; color: var(--muted); font-size: 14px; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /* ---- Stock ---- */
   .card.is-soldout .photo-slot { filter: grayscale(1) brightness(0.8); }
   .card.is-soldout .body { background: linear-gradient(to top, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.6) 45%, rgba(20,20,20,0.1) 100%); }
@@ -761,74 +731,52 @@
   }
   .buy-btn:disabled { background: #666; box-shadow: none; cursor: not-allowed; }
   .buy-btn:disabled::after { display: none; }
-  .ad-three { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 6px; }
-  .ad-three label { font-size: 12px; color: var(--muted); }
-  .ad-three .ad-input { margin: 3px 0 0; padding: 10px 8px; }
-  .ad-q.stk { border-color: #1A1A1A; color: #1A1A1A; }
-  .ad-q.stk:hover { background: #1A1A1A; color: #fff; }
+  
+  
+  
+  
+  
   /* ---- Stats ---- */
-  .st-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 4px 0 14px; }
-  .st-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 8px; text-align: center; }
-  .st-card b { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 24px; color: var(--clay); }
-  .st-card span { font-size: 11px; color: var(--muted); }
-  .st-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
-  .st-rank { width: 22px; text-align: center; font-weight: 700; color: var(--clay); }
-  .st-thumb { width: 42px; height: 56px; object-fit: cover; border-radius: 8px; background: #E9DBC0; }
-  .st-info { flex: 1; min-width: 0; }
-  .st-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .st-bar { height: 6px; background: var(--border); border-radius: 999px; margin: 5px 0 3px; overflow: hidden; }
-  .st-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--clay), var(--brass)); border-radius: 999px; }
-  .st-meta { font-size: 11px; color: var(--muted); }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /* ---- Admin: fixed header/footer, only the middle scrolls ---- */
-  .admin-sheet {
-    display: flex; flex-direction: column;
-    height: 92vh; max-height: 92vh; overflow: hidden;
-    padding-bottom: 0;
-  }
-  .admin-sheet .ad-head { flex: 0 0 auto; padding-bottom: 6px; }
-  .admin-sheet #ad-body {
-    flex: 1; min-height: 0; overflow-y: auto;
-    -webkit-overflow-scrolling: touch; padding-bottom: 10px;
-  }
-  .ad-list { max-height: none; overflow: visible; }
-  .ad-foot {
-    flex: 0 0 auto; padding: 10px 0 calc(12px + env(safe-area-inset-bottom, 0px));
-    border-top: 1px solid var(--border); background: var(--card);
-  }
-  .ad-foot button {
-    width: 100%; padding: 13px; border: none; border-radius: 999px;
-    background: #1A1A1A; color: #fff; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
-  }
-  .ad-x { width: 40px; height: 40px; font-size: 17px; flex: 0 0 auto; }
-  .ad-row.no-thumb { grid-template-columns: 1fr; }
+  
+  
+  
+  
+  
+  
+  
+  
   .ad-num, .st-card b, .sale-pill, .timer span, .sheet-price, .brand { font-variant-numeric: lining-nums; }
   /* ---- Admin: photos & add product ---- */
-  .ad-side { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
-  .ad-thumbwrap { width: 74px; height: 98px; border-radius: 10px; overflow: hidden; background: #E9DBC0; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
-  .ad-thumbwrap .ad-thumb { width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; display: block; }
-  .ad-photo-btn, .ad-dl, .ad-del {
-    display: block; width: 74px; text-align: center; padding: 6px 2px;
-    border: 1px solid var(--border); border-radius: 999px; background: #fff; color: var(--ink);
-    font-family: inherit; font-size: 11px; font-weight: 600; cursor: pointer;
-  }
-  .ad-dl { border-color: #3F7D5C; color: #3F7D5C; }
-  .ad-del { border-color: #B8213F; color: #B8213F; }
-  .ad-addbtn { width: 100%; margin-bottom: 10px; padding: 12px; background: #1A1A1A; color: #fff; }
-  .ad-addbtn:hover { background: var(--clay); border-color: var(--clay); }
-  .ad-addform { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
-  .ad-photo-pick {
-    display: flex; align-items: center; justify-content: center;
-    height: 170px; margin-bottom: 10px; border-radius: 14px; cursor: pointer;
-    border: 2px dashed var(--border); background: #FBF4E6 center / cover no-repeat;
-    color: var(--muted); font-size: 14px; font-weight: 600;
-  }
-  .ad-photo-pick.has { border-style: solid; color: #fff; }
-  .ad-photo-pick.has span { background: rgba(26,26,26,0.7); padding: 6px 14px; border-radius: 999px; }
-  .ad-addrow { margin-top: 4px; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   /* ---- Admin: tabs scroll ---- */
-  .ad-tabs { overflow-x: auto; scrollbar-width: none; }
-  .ad-tabs::-webkit-scrollbar { display: none; }
-  .ad-tab { flex: 1 0 auto; padding: 10px 12px; white-space: nowrap; }
+  
+  
+  
   /* ---- Polish: logo, lightbox nav, footer, hero ---- */
   .brand-box { display: flex; align-items: center; gap: 10px; user-select: none; -webkit-user-select: none; }
   .logo-mark {
@@ -1116,224 +1064,11 @@
     #sale-grid .card { width: 132px; }
     .soldout { font-size: 10px; padding: 4px 8px; border-width: 2px; }
     /* Admin */
-    .ad-row { grid-template-columns: 58px 1fr; gap: 10px; }
-    .ad-thumbwrap { width: 58px; height: 78px; }
-    .ad-photo-btn, .ad-dl, .ad-del { width: 58px; font-size: 10px; }
+    
+    
+    
   }
 
-
-  /* ---- UI/UX polish v5 ---- */
-  body { background: linear-gradient(180deg, #FBF7F2 0%, #FFFFFF 420px); }
-  .topbar { background: rgba(255,255,255,0.88); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); border-bottom-color: rgba(36,27,18,0.08); }
-  .announce { background: linear-gradient(90deg, #2A1B22, var(--clay-dark), #2A1B22); letter-spacing: 0.03em; }
-  .brand { font-size: 22px; }
-  .tb-search input { background: #F5EFEA; border-color: transparent; }
-  .tb-search input:focus { background: #fff; border-color: var(--clay); box-shadow: 0 0 0 4px rgba(var(--clay-rgb),0.14); }
-  .top-actions a { border-color: transparent; background: #F5EFEA; transition: background 0.2s ease, color 0.2s ease; }
-  .top-actions a:hover { background: var(--clay); border-color: var(--clay); }
-  .catnav { border-top-color: rgba(36,27,18,0.06); gap: 6px; padding: 8px 16px; }
-  .catnav button { border-bottom: none; margin-bottom: 0; border-radius: 999px; padding: 9px 18px; font-size: 14px; }
-  .catnav button:hover { background: #F5EFEA; color: var(--ink); }
-  .catnav button.on { background: var(--ink); color: #fff; }
-  .catnav button.sale { background: #FDECEE; }
-  .catnav button.sale.on { background: #D0021B; color: #fff; }
-
-  .promo { border-radius: 20px; box-shadow: 0 18px 44px rgba(36,27,18,0.2); }
-  .promo-slide { min-height: 400px; }
-  .promo-slide::after { background: linear-gradient(90deg, rgba(20,10,14,0.68), rgba(20,10,14,0.12) 72%); }
-  .bn-title { font-size: 50px; letter-spacing: -0.01em; }
-  .bn-btn { border-radius: 999px; padding: 14px 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-  .bn-btn:hover { background: var(--clay); color: #fff; }
-
-  .section-head { margin: 8px 0 18px; align-items: center; }
-  .section-head h2 { font-size: 24px; display: flex; align-items: center; gap: 12px; }
-  .section-head h2::before { content: ""; width: 5px; height: 26px; border-radius: 4px; background: var(--clay); }
-  .sale-head h2::before { background: #D0021B; }
-  .section-head .count { background: #F5EFEA; color: var(--muted); padding: 5px 12px; border-radius: 999px; font-size: 13px; }
-
-  .card .photo-slot { border-radius: 16px; background-color: #F1EAE4; }
-  .card .photo-slot img { transition: transform 0.6s cubic-bezier(.2,.7,.2,1); }
-  .card:hover .photo-slot img { transform: scale(1.06); }
-  .card:hover .photo-slot { box-shadow: 0 16px 34px rgba(36,27,18,0.22); }
-  .card .body { padding: 12px 4px 0; }
-  .brand-line { color: var(--clay); font-size: 10.5px; }
-  .card .body h3 { font-size: 14.5px; font-weight: 600; }
-  .card .price { font-size: 18px; }
-  .card .body .buy-btn { border-radius: 999px; padding: 12px; background: var(--ink); transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
-  .card .body .buy-btn:hover { background: var(--clay); box-shadow: 0 8px 18px rgba(var(--clay-rgb),0.35); }
-  .card .body .buy-btn:active { transform: scale(0.97); }
-  .disc { border-radius: 999px; padding: 4px 11px; box-shadow: 0 4px 12px rgba(208,2,27,0.35); }
-  .lowstock { border-radius: 999px; }
-
-  button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid rgba(var(--clay-rgb),0.55); outline-offset: 2px; }
-  @media (max-width: 640px) {
-    .promo { border-radius: 16px; }
-    .promo-slide { min-height: 260px; }
-    .bn-title { font-size: 28px; }
-    .section-head h2 { font-size: 20px; }
-    .card .photo-slot { border-radius: 12px; }
-  }
-  @media (prefers-reduced-motion: reduce) { .card .photo-slot img { transition: none; } .card:hover .photo-slot img { transform: none; } }
-
-  /* ---- UI/UX polish v6 ---- */
-  .wrap { max-width: 1280px; }
-  .grid { gap: 28px 20px; }
-  header { border-radius: 24px; padding: 56px 44px; position: relative; overflow: hidden;
-    background: radial-gradient(900px 340px at 85% -10%, rgba(var(--clay-rgb),0.55), transparent 60%), linear-gradient(120deg, #1B1116 0%, #3A1F2A 60%, #5A2434 100%); }
-  header::after { content: ""; position: absolute; right: -80px; bottom: -120px; width: 360px; height: 360px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 0 0 36px rgba(255,255,255,0.04), 0 0 0 78px rgba(255,255,255,0.025); pointer-events: none; }
-  header h1 { font-size: 58px; letter-spacing: -0.01em; line-height: 1.12; }
-  header .tagline { font-size: 17px; line-height: 1.7; }
-  header .cta { border-radius: 999px; padding: 15px 34px; font-weight: 700; box-shadow: 0 10px 26px rgba(0,0,0,0.3); transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease; }
-  header .cta:hover { transform: translateY(-2px); }
-
-  .flash { border-radius: 18px; padding: 16px 22px; background: linear-gradient(100deg, #D0021B, #FF5A5F); color: #fff; box-shadow: 0 14px 32px rgba(208,2,27,0.28); }
-  .flash .timer { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); border-radius: 12px; font-variant-numeric: tabular-nums; }
-
-  .sheet-backdrop { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); background: rgba(27,17,22,0.5); }
-  .sheet { border-radius: 24px 24px 0 0; box-shadow: 0 -20px 60px rgba(27,17,22,0.35); }
-  .sheet-handle { width: 44px; height: 5px; border-radius: 999px; background: #DDD0C8; }
-  .sheet-thumb { border-radius: 14px; box-shadow: 0 6px 16px rgba(36,27,18,0.18); }
-  .sheet-price { color: var(--clay-dark); font-weight: 700; }
-  .size-chip { border-radius: 12px; min-width: 52px; padding: 11px 16px; border: 1.5px solid var(--border); background: #fff; font-weight: 600; transition: all 0.18s ease; }
-  .size-chip:hover { border-color: var(--clay); color: var(--clay-dark); }
-  .size-chip.on, .size-chip.selected, .size-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; box-shadow: 0 6px 14px rgba(36,27,18,0.25); }
-  .sheet-confirm { border-radius: 999px; padding: 15px; font-weight: 700; background: linear-gradient(100deg, var(--clay-dark), var(--clay)); box-shadow: 0 12px 26px rgba(var(--clay-rgb),0.38); transition: transform 0.15s ease, box-shadow 0.2s ease; }
-  .sheet-confirm:active { transform: scale(0.98); }
-
-  .lightbox { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: rgba(14,8,11,0.9); }
-  .lightbox img { border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,0.55); }
-  .lb-nav, .lightbox-close { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background 0.2s ease; }
-  .lb-nav:hover, .lightbox-close:hover { background: rgba(255,255,255,0.28); }
-
-  .to-top { border-radius: 50%; background: var(--ink); color: #fff; box-shadow: 0 10px 24px rgba(36,27,18,0.3); transition: background 0.2s ease, transform 0.2s ease; }
-  .to-top:hover { background: var(--clay); transform: translateY(-3px); }
-  footer { background: linear-gradient(180deg, #2A1B22, #1B1116); color: rgba(255,255,255,0.78); border-radius: 24px 24px 0 0; margin-top: 56px; padding: 44px 24px 32px; }
-  footer .f-brand { color: #fff; }
-  footer a { color: #fff; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 3px; }
-  footer a:hover { color: #F3D58E; }
-  @media (max-width: 640px) {
-    .grid { gap: 22px 12px; }
-    header { padding: 36px 24px; border-radius: 18px; }
-    header h1 { font-size: 38px; }
-    header .tagline { font-size: 15px; }
-    .flash { border-radius: 14px; padding: 12px 14px; }
-    footer { border-radius: 18px 18px 0 0; }
-  }
-
-  /* ---- UI/UX polish v7: countdown + bar + buttons ---- */
-  .flash { padding: 16px 22px; gap: 16px; background: linear-gradient(110deg, #B8213F 0%, #E8445F 55%, #FF7A59 100%); }
-  .flash .flash-icon { width: 48px; height: 48px; font-size: 20px; background: #fff; color: #D0021B; border: none; box-shadow: 0 8px 18px rgba(0,0,0,0.22); }
-  .flash .flash-text b { font-size: 18px; font-weight: 700; }
-  .flash .flash-text small { font-size: 13px; opacity: 0.92; }
-  .flash .timer { background: none; border: none; border-radius: 0; gap: 6px; align-items: flex-start; }
-  .flash .timer span {
-    position: relative; min-width: 54px; padding: 9px 6px 20px; font-size: 24px; line-height: 1; border-radius: 12px;
-    background: linear-gradient(180deg, #2A1B22 0%, #2A1B22 50%, #1B1116 50%, #1B1116 100%); color: #fff;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
-  }
-  .flash .timer span::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,0.55); }
-  .flash .timer span::after { position: absolute; left: 0; right: 0; bottom: 5px; text-align: center; font-family: "Noto Sans Khmer", sans-serif; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.7); }
-  #t-h::after { content: "ម៉ោង"; } #t-m::after { content: "នាទី"; } #t-s::after { content: "វិនាទី"; color: #FFC9D1; }
-  .flash .timer i { align-self: flex-start; margin-top: 10px; font-size: 22px; opacity: 0.85; animation: blink 1s steps(2, start) infinite; }
-  @keyframes blink { 50% { opacity: 0.25; } }
-
-  .tb-row { padding: 12px 24px; }
-  .logo-mark { box-shadow: 0 6px 14px rgba(var(--clay-rgb),0.35); }
-  .top-actions a { width: 42px; height: 42px; font-size: 16px; }
-  .top-actions a:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(var(--clay-rgb),0.35); }
-  .sort { border-radius: 999px; background-color: #F5EFEA; border-color: transparent; padding: 10px 34px 10px 16px; transition: box-shadow 0.2s ease; }
-  .sort:hover { box-shadow: 0 0 0 3px rgba(var(--clay-rgb),0.14); }
-  .catnav { scroll-snap-type: x proximity; }
-  .catnav button { transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
-  .catnav button:active { transform: scale(0.95); }
-  .catnav button.on { box-shadow: 0 6px 14px rgba(36,27,18,0.25); }
-
-  .card .body .buy-btn { font-size: 14px; letter-spacing: 0.01em; background: linear-gradient(100deg, var(--ink), #3A1F2A); }
-  .card .body .buy-btn:hover { background: linear-gradient(100deg, var(--clay-dark), var(--clay)); transform: translateY(-1px); }
-  .card .body .buy-btn.added { background: linear-gradient(100deg, #3E5C3D, var(--moss)); }
-  .ad-btn, .cta, .bn-btn, .sheet-cancel { transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease; }
-  .sheet-cancel { border-radius: 999px; padding: 12px; font-weight: 600; }
-  .sheet-cancel:hover { background: #F5EFEA; color: var(--ink); }
-  @media (max-width: 640px) {
-    .flash { padding: 12px 12px; gap: 10px; flex-wrap: wrap; }
-    .flash .flash-icon { width: 38px; height: 38px; font-size: 16px; }
-    .flash .flash-text b { font-size: 14px; }
-    .flash .flash-text small { font-size: 11px; }
-    .flash .timer { width: 100%; justify-content: center; }
-    .flash .timer span { min-width: 62px; font-size: 24px; }
-    .tb-row { padding: 10px 14px; }
-  }
-  @media (prefers-reduced-motion: reduce) { .flash .timer i { animation: none; } }
-
-  /* ---- UI/UX polish v8: buttons ---- */
-  .card .body .buy-btn, .sheet-confirm, header .cta, .bn-btn, .ad-btn.primary, .ad-addbtn {
-    background-size: 220% 100%; background-position: 0% 0;
-    transition: background-position 0.45s ease, transform 0.18s ease, box-shadow 0.25s ease, color 0.2s ease;
-  }
-  .card .body .buy-btn {
-    background-image: linear-gradient(100deg, #241B12 0%, #3A1F2A 45%, #C2566E 100%);
-    border-radius: 999px; padding: 13px 16px; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
-    box-shadow: 0 6px 14px rgba(36,27,18,0.22), inset 0 1px 0 rgba(255,255,255,0.14);
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .card .body .buy-btn:hover { background-image: linear-gradient(100deg, #241B12 0%, #3A1F2A 45%, #C2566E 100%); background-color: transparent; background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 12px 22px rgba(var(--clay-rgb),0.4); }
-  .card .body .buy-btn:active { transform: translateY(0) scale(0.97); box-shadow: 0 4px 10px rgba(36,27,18,0.25); }
-  .card .body .buy-btn.added, .card .body .buy-btn.added:hover { background-image: linear-gradient(100deg, #3E5C3D, #5F8A5C); background-color: transparent; background-position: 0 0; }
-  .card .body .buy-btn:disabled, .card .body .buy-btn:disabled:hover { background-image: none; background: #ECE6E1; color: #A39489; box-shadow: none; transform: none; }
-
-  header .cta {
-    background-image: linear-gradient(100deg, #fff 0%, #fff 50%, #F3D58E 100%); color: #1B1116;
-    border-radius: 999px; padding: 16px 36px; font-size: 15px; font-weight: 700;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.32);
-  }
-  header .cta:hover { background-position: 100% 0; background-color: transparent; color: #1B1116; transform: translateY(-3px); box-shadow: 0 18px 34px rgba(0,0,0,0.4); }
-  header .cta:active { transform: scale(0.97); }
-
-  .bn-btn { background-image: linear-gradient(100deg, #fff 0%, #fff 50%, #F3D58E 100%); border-radius: 999px; padding: 14px 34px; font-weight: 700; box-shadow: 0 10px 24px rgba(0,0,0,0.32); }
-  .bn-btn:hover { background-position: 100% 0; background-color: transparent; color: #1B1116; transform: translateY(-2px); }
-
-  .sheet-confirm { background-image: linear-gradient(100deg, #9E3A52 0%, #C2566E 50%, #E0788E 100%); border-radius: 999px; padding: 16px; font-size: 16px; font-weight: 700; box-shadow: 0 14px 28px rgba(var(--clay-rgb),0.4); }
-  .sheet-confirm:hover { background-image: linear-gradient(100deg, #9E3A52 0%, #C2566E 50%, #E0788E 100%); background-position: 100% 0; transform: translateY(-2px); }
-  .sheet-cancel { border: 1.5px solid var(--border); background: #fff; border-radius: 999px; padding: 13px; font-weight: 600; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-  .sheet-cancel:hover { border-color: var(--ink); color: var(--ink); background: #FBF7F2; }
-
-  .size-chip { border-radius: 999px; min-width: 56px; padding: 11px 18px; }
-  .size-chip:active { transform: scale(0.94); }
-
-  .catnav button { border: 1.5px solid transparent; font-weight: 600; }
-  .catnav button:not(.on):hover { border-color: var(--border); background: #fff; }
-  .top-actions a { border-radius: 50%; transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.2s ease, color 0.2s ease; }
-  .top-actions a:active { transform: scale(0.92); }
-  .to-top { width: 48px; height: 48px; background-image: linear-gradient(135deg, #241B12, #3A1F2A); }
-  .to-top:hover { background-image: linear-gradient(135deg, #C2566E, #9E3A52); }
-
-  .ad-btn { border-radius: 999px; padding: 11px 20px; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease; }
-  .ad-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(36,27,18,0.2); }
-  .ad-btn:active { transform: scale(0.97); }
-
-  button { -webkit-tap-highlight-color: transparent; }
-  button:disabled { cursor: not-allowed; }
-  @media (prefers-reduced-motion: reduce) { .card .body .buy-btn, .sheet-confirm, header .cta, .bn-btn { transition: none; } }
-
-  /* ---- Fix: buy button on narrow phones (4-column grid) ---- */
-  @media (max-width: 640px) {
-    .card .body .buy-btn { padding: 8px 4px; min-height: 34px; height: auto; font-size: 11px; font-weight: 700; gap: 4px; border-radius: 999px; line-height: 1.3; letter-spacing: 0; }
-    .card .body .buy-btn .label { white-space: nowrap; line-height: 1.3; }
-    .card .body .buy-btn i { font-size: 11px; }
-    .card .body h3 { font-size: 12.5px; line-height: 1.35; min-height: 2.5em; margin-bottom: 2px; }
-    .card .price { font-size: 14px; }
-    .pricebox { margin-bottom: 8px; }
-    .card .body { padding: 8px 2px 0; }
-  }
-  @media (max-width: 480px) {
-    .card .body .buy-btn i { display: none; }
-  }
-
-  /* ---- Admin delete button ---- */
-  .ad-del { color: #D0021B; border-color: #F3C3C9; background: #FFF5F6; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
-  .ad-del:hover { background: #D0021B; color: #fff; border-color: #D0021B; }
-  .ad-del:active { transform: scale(0.95); }
-  .ad-del { white-space: nowrap; font-size: 10.5px; }
 </style>
 </head>
 <body>
@@ -1435,30 +1170,8 @@
     </div>
   </div>
 
-  <div class="sheet-backdrop" id="admin-login">
-    <div class="sheet" role="dialog" aria-modal="true">
-      <div class="sheet-handle"></div>
-      <h3>Admin</h3>
-      <p class="ad-sub">សម្រាប់ម្ចាស់ហាងប៉ុណ្ណោះ · Login តាម Supabase</p>
-      <input id="admin-email" class="ad-input" type="email" placeholder="អ៊ីមែល Admin" autocomplete="username" />
-      <input id="admin-pass" class="ad-input" type="password" placeholder="ពាក្យសម្ងាត់" autocomplete="current-password" />
-      <div class="ad-err" id="admin-err"></div>
-      <button class="sheet-confirm" id="admin-go" type="button">ចូល</button>
-      <button class="sheet-cancel" id="admin-login-cancel" type="button">បោះបង់</button>
-    </div>
-  </div>
-
-  <div class="sheet-backdrop" id="admin-sheet">
-    <div class="sheet admin-sheet" role="dialog" aria-modal="true">
-      <div class="ad-head"><h3>Admin</h3><span class="ad-saved" id="ad-saved">រក្សាទុករួច ✓</span><button class="ad-x" id="ad-close" type="button" aria-label="បិទ">✕</button></div>
-      <div id="ad-body"></div>
-      <div class="ad-foot"><button type="button" id="ad-close2">បិទ Admin</button></div>
-    </div>
-  </div>
-
   <button class="to-top" id="to-top" aria-label="ឡើងលើ"><i class="fa-solid fa-chevron-up"></i></button>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 
 // ដាក់ username Telegram របស់ហាងនៅទីនេះ (មិនបាច់ដាក់ @)
@@ -1564,32 +1277,29 @@ const SETTINGS = {        // ការកំណត់រចនា និងហ�
 };
 // ===================================================================
 
-// ---------- Supabase + Admin ----------
-const SUPABASE_URL = "https://emczthnufoklqitffrjv.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_DVrYO-yIUttxoBaUWFng3w_ChcCs7Xo";
-const ADMIN_UID = "fead1e4b-f44b-45ea-919e-a87f06bad3f0";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+// ---------- Admin (ម្ចាស់ហាង) ----------
 const ORIG_PRODUCTS = PRODUCTS.map((p) => ({ ...p }));
 let adminOn = false;
-let adminData = { edits: {}, hidden: [...HIDDEN], sale: { ...MANUAL_SALE }, stock: { ...STOCK }, settings: {}, added: [], deleted: [] };
+try { adminOn = localStorage.getItem("adminOn") === "1"; } catch (e) {}
+let adminData = { edits: {}, hidden: [...HIDDEN], sale: { ...MANUAL_SALE }, stock: { ...STOCK }, settings: {}, added: [] };
 let adminImages = {};   // រូបដែលម្ចាស់ហាងដាក់ { លេខទំនិញ: dataURL } (លើឧបករណ៍នេះ)
-const photoOf = (n) => adminImages[n] || `Example${n}.jpg`;
+const photoOf = (n) => (adminOn && adminImages[n]) ? adminImages[n] : `Example${n}.jpg`;
 function loadAdminData() {
   PRODUCTS.length = ORIG_PRODUCTS.length;      // លុបទំនិញថ្មីដែលបានបន្ថែមពីមុន (ការពារស្ទួន)
   try {
     const saved = JSON.parse(localStorage.getItem("adminData") || "null");
-    if (saved) adminData = { edits: saved.edits || {}, hidden: saved.hidden || [], sale: saved.sale || {}, stock: saved.stock || { ...STOCK }, settings: saved.settings || {}, deleted: saved.deleted || [], added: saved.added || [] };
+    if (saved) adminData = { edits: saved.edits || {}, hidden: saved.hidden || [], sale: saved.sale || {}, stock: saved.stock || { ...STOCK }, settings: saved.settings || {}, added: saved.added || [] };
   } catch (e) {}
   try { adminImages = JSON.parse(localStorage.getItem("adminImages") || "{}") || {}; } catch (e) { adminImages = {}; }
   Object.entries(adminData.edits).forEach(([k, v]) => { if (PRODUCTS[k]) Object.assign(PRODUCTS[k], v); });
   (adminData.added || []).forEach((a) => PRODUCTS.push({ name: a.name, place: a.place, price: a.price }));
 }
-loadAdminData();
-let settings = { ...SETTINGS, ...adminData.settings };
-const rebuildSettings = () => { settings = { ...SETTINGS, ...adminData.settings }; };
+if (adminOn) loadAdminData();
+let settings = { ...SETTINGS, ...(adminOn ? adminData.settings : {}) };
+const rebuildSettings = () => { settings = { ...SETTINGS, ...(adminOn ? adminData.settings : {}) }; };
 const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-const hiddenSet = () => new Set([...adminData.hidden, ...(adminData.deleted || [])]);
-const manualSale = () => adminData.sale;
+const hiddenSet = () => new Set(adminOn ? adminData.hidden : HIDDEN);
+const manualSale = () => (adminOn ? adminData.sale : MANUAL_SALE);
 
 const formatRiel = (n) => n.toLocaleString("en-US") + " ៛";
 
@@ -1630,7 +1340,7 @@ window.addEventListener("scroll", onScrollUI, { passive: true });
 onScrollUI();
 
 // ---------- ស្តុក + ស្ថិតិ ----------
-const stockMap = () => adminData.stock;
+const stockMap = () => (adminOn ? adminData.stock : STOCK);
 function stockOf(idx) {
   const v = stockMap()[idx + 1];
   return v === undefined || v === "" || v === null ? null : Number(v);   // null = គ្មានកំណត់
@@ -1954,7 +1664,7 @@ function fillGrid(grid, list, instant) {
     });
     card.innerHTML = `
       <div class="photo-slot">
-        <img class="preview-img" src="${photoOf(i + 1)}" alt="${item.name}" loading="lazy" decoding="async"
+        <img class="preview-img" src="${photoOf(i + 1)}" alt="${item.name}" ${adminOn && adminImages[i + 1] ? "" : 'loading="lazy"'} decoding="async"
              onload="this.parentElement.style.animation='none'"
              onerror="this.style.display='none';this.parentElement.classList.add('noimg')" />
         <div class="ph"><i class="fa-regular fa-image"></i></div>
@@ -2008,7 +1718,7 @@ document.getElementById("search").addEventListener("input", (e) => {
 document.getElementById("sort").addEventListener("change", (e) => { sortBy = e.target.value; render(); });
 
 // ---------- ផ្ទាំងផ្សព្វផ្សាយធំ 3 ----------
-const bannerImg = (n) => adminImages["b" + n] || `Largebillboard${n}.jpg`;
+const bannerImg = (n) => (adminOn && adminImages["b" + n]) ? adminImages["b" + n] : `Banner${n}.jpg`;
 function bannerAction(b) {
   const t = (b && b.target) || "all";
   if (/^https?:/i.test(t)) { window.open(t, "_blank", "noopener"); return; }
@@ -2136,625 +1846,6 @@ function applySettings() {
   applyTheme(S.accent);
 }
 
-// ---------- Admin UI ----------
-async function sha256(text) {
-  if (!(window.crypto && crypto.subtle)) throw new Error("nosubtle");
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
-  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
-}
-const adminLogin = document.getElementById("admin-login");
-const adminSheet = document.getElementById("admin-sheet");
-const adminPass = document.getElementById("admin-pass");
-const adminEmail = document.getElementById("admin-email");
-const adminErr = document.getElementById("admin-err");
-
-function openAdminLogin() {
-  if (adminOn) { openAdminPanel(); return; }
-  adminErr.textContent = ""; adminPass.value = "";
-  adminLogin.classList.add("open");
-  setTimeout(() => adminEmail.focus(), 60);
-}
-async function tryAdminLogin() {
-  adminErr.textContent = "កំពុង Login...";
-  const { data, error } = await supabaseClient.auth.signInWithPassword({
-    email: adminEmail.value.trim(),
-    password: adminPass.value
-  });
-  if (error || !data.user || data.user.id !== ADMIN_UID) {
-    if (data && data.user && data.user.id !== ADMIN_UID) await supabaseClient.auth.signOut();
-    adminErr.textContent = error ? "Login មិនបានទេ។ សូមពិនិត្យអ៊ីមែល/ពាក្យសម្ងាត់" : "គណនីនេះមិនមានសិទ្ធិ Admin";
-    return;
-  }
-  adminOn = true;
-  await loadSupabaseState();
-  await persistRemoteState();
-  refreshSite();
-  adminLogin.classList.remove("open");
-  openAdminPanel();
-}
-document.getElementById("admin-go").addEventListener("click", tryAdminLogin);
-adminPass.addEventListener("keydown", (e) => { if (e.key === "Enter") tryAdminLogin(); });
-document.getElementById("admin-login-cancel").addEventListener("click", () => adminLogin.classList.remove("open"));
-adminLogin.addEventListener("click", (e) => { if (e.target === adminLogin) adminLogin.classList.remove("open"); });
-
-function saveAdmin() {
-  const edits = {};
-  PRODUCTS.forEach((p, k) => {
-    if (k >= ORIG_PRODUCTS.length) return;
-    const o = ORIG_PRODUCTS[k], d = {};
-    ["name", "place", "price"].forEach((f) => { if (p[f] !== o[f]) d[f] = p[f]; });
-    if (Object.keys(d).length) edits[k] = d;
-  });
-  adminData.edits = edits;
-  adminData.added = PRODUCTS.slice(ORIG_PRODUCTS.length).map((p) => ({ name: p.name, place: p.place, price: p.price }));
-  try { localStorage.setItem("adminData", JSON.stringify(adminData)); } catch (e) {}
-  flashSaved();
-  if (adminOn) persistRemoteState();
-}
-function refreshSite() { SALE = buildSale(); render(); }
-
-
-function processImage(file, maxSide = 900) {
-  const draw = (src, w, h) => {
-    const k = Math.min(1, maxSide / Math.max(w, h));
-    const c = document.createElement("canvas");
-    c.width = Math.round(w * k); c.height = Math.round(h * k);
-    c.getContext("2d").drawImage(src, 0, 0, c.width, c.height);
-    return c.toDataURL("image/jpeg", 0.82);
-  };
-  const viaImg = () => new Promise((resolve, reject) => {
-    const fr = new FileReader();
-    fr.onerror = () => reject(new Error("read"));
-    fr.onload = () => {
-      const img = new Image();
-      img.onload = () => resolve(draw(img, img.width, img.height));
-      img.onerror = () => reject(new Error("img"));
-      img.src = fr.result;
-    };
-    fr.readAsDataURL(file);
-  });
-  if (window.createImageBitmap) {
-    return createImageBitmap(file).then((b) => { const d = draw(b, b.width, b.height); if (b.close) b.close(); return d; }).catch(viaImg);
-  }
-  return viaImg();
-}
-// សារតូចក្នុងទំព័រ (alert ត្រូវបានរារាំងក្នុង browser ក្នុងកម្មវិធីខ្លះ)
-function adToast(msg) {
-  let t = document.getElementById("ad-toast");
-  if (!t) {
-    t = document.createElement("div"); t.id = "ad-toast";
-    t.style.cssText = "position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:99999;background:#241B12;color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 10px 28px rgba(0,0,0,.35);max-width:88vw;text-align:center";
-    document.body.appendChild(t);
-  }
-  t.textContent = msg; t.style.display = "block";
-  clearTimeout(t._h); t._h = setTimeout(() => { t.style.display = "none"; }, 3200);
-}
-window.alert = (m) => adToast(m);
-// IndexedDB: កន្លែងផ្ទុករូបធំជាង localStorage
-const idb = {
-  open() { return new Promise((res, rej) => { try { const r = indexedDB.open("shopdb", 1); r.onupgradeneeded = () => r.result.createObjectStore("kv"); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); } catch (e) { rej(e); } }); },
-  get(k) { return this.open().then((db) => new Promise((res, rej) => { const q = db.transaction("kv").objectStore("kv").get(k); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); })); },
-  set(k, v) { return this.open().then((db) => new Promise((res, rej) => { const t = db.transaction("kv", "readwrite"); t.objectStore("kv").put(v, k); t.oncomplete = () => res(true); t.onerror = () => rej(t.error); })); }
-};
-let remoteSaveQueue = Promise.resolve();
-function persistRemoteState() {
-  if (!adminOn) return Promise.resolve(false);
-  const snapshot = { adminData, adminImages };
-  remoteSaveQueue = remoteSaveQueue.then(async () => {
-    const { error } = await supabaseClient.from("shop_state").upsert({
-      id: 1, data: snapshot, updated_at: new Date().toISOString()
-    }, { onConflict: "id" });
-    if (error) { adToast("រក្សាទុក Cloud មិនបាន: " + error.message); throw error; }
-    return true;
-  }).catch((e) => { console.error("Supabase save failed", e); return false; });
-  return remoteSaveQueue;
-}
-function dataUrlToBlob(dataUrl) {
-  return fetch(dataUrl).then((r) => r.blob());
-}
-async function uploadImagesToStorage() {
-  if (!adminOn) return;
-  for (const key of Object.keys(adminImages)) {
-    const value = adminImages[key];
-    if (typeof value !== "string" || !value.startsWith("data:image/")) continue;
-    const path = String(key).startsWith("b") ? `banners/${String(key).slice(1)}.jpg` : `products/${key}.jpg`;
-    const blob = await dataUrlToBlob(value);
-    const { error } = await supabaseClient.storage.from("product-images").upload(path, blob, {
-      upsert: true, contentType: "image/jpeg", cacheControl: "3600"
-    });
-    if (error) throw error;
-    const { data } = supabaseClient.storage.from("product-images").getPublicUrl(path);
-    adminImages[key] = data.publicUrl;
-  }
-}
-function saveImages() {
-  try { localStorage.setItem("adminImages", JSON.stringify(adminImages)); } catch (e) {}
-  idb.set("adminImages", adminImages).catch(() => {});
-  if (adminOn) uploadImagesToStorage().then(() => {
-    try { localStorage.setItem("adminImages", JSON.stringify(adminImages)); } catch (e) {}
-    return persistRemoteState();
-  }).catch((e) => adToast("Upload រូបមិនបាន: " + (e.message || "សូមសាកម្ដងទៀត")));
-  return true;
-}
-async function deleteStoredImage(key) {
-  if (!adminOn) return;
-  const path = String(key).startsWith("b") ? `banners/${String(key).slice(1)}.jpg` : `products/${key}.jpg`;
-  const { error } = await supabaseClient.storage.from("product-images").remove([path]);
-  if (error) console.warn("Storage delete failed", error.message);
-}
-async function loadSupabaseState() {
-  const { data, error } = await supabaseClient.from("shop_state").select("data").eq("id", 1).maybeSingle();
-  if (error) { console.warn("Supabase load failed", error.message); return; }
-  const state = data && data.data;
-  if (!state || !state.adminData) return;
-  adminData = { edits: {}, hidden: [], sale: {}, stock: { ...STOCK }, settings: {}, added: [], deleted: [], ...state.adminData };
-  adminImages = state.adminImages && typeof state.adminImages === "object" ? state.adminImages : {};
-  try { localStorage.setItem("adminData", JSON.stringify(adminData)); localStorage.setItem("adminImages", JSON.stringify(adminImages)); } catch (e) {}
-  loadAdminData();
-  settings = { ...SETTINGS, ...adminData.settings };
-  rebuildSettings();
-  refreshSite(); applySettings(); renderPromo();
-}
-// Public visitors load the same cloud product data; admin rights still require Supabase Auth.
-supabaseClient.auth.getSession().then(async ({ data }) => {
-  const user = data && data.session && data.session.user;
-  if (user && user.id === ADMIN_UID) adminOn = true;
-  else if (user) await supabaseClient.auth.signOut();
-  await loadSupabaseState();
-}).catch((e) => console.warn("Supabase initialization failed", e));
-function downloadPhoto(n) {
-  const data = adminImages[n];
-  if (!data) return;
-  const a = document.createElement("a");
-  a.href = data; a.download = `Example${n}.jpg`;
-  document.body.appendChild(a); a.click(); a.remove();
-}
-
-let adFilter = "all";
-function adminRows(q) {
-  const hidden = new Set(adminData.hidden);
-  const gone = new Set(adminData.deleted || []);
-  const needle = (q || "").trim().toLowerCase();
-  const out = PRODUCTS.map((p, k) => {
-    const n = k + 1;
-    if (gone.has(n)) return "";
-    const h = hidden.has(n), onSale = Number(adminData.sale[n]) > 0, out = adminData.stock[n] !== undefined && adminData.stock[n] !== "" && Number(adminData.stock[n]) === 0;
-    if (adFilter === "sale" && !onSale) return "";
-    if (adFilter === "hidden" && !h) return "";
-    if (adFilter === "out" && !out) return "";
-    if (needle && !(p.name.toLowerCase().includes(needle) || String(n) === needle)) return "";
-    return `<div class="ad-row${h ? " is-hidden" : ""}" data-n="${n}">
-      <div class="ad-side">
-        <div class="ad-thumbwrap"><img class="ad-thumb" src="${photoOf(n)}" alt="" loading="lazy" onerror="this.style.display='none'" /></div>
-        <label class="ad-photo-btn">📷 ប្តូររូប<input type="file" accept="image/*" data-img="${n}" hidden></label>
-        ${adminImages[n] ? `<button type="button" class="ad-dl" data-dl="${n}">⬇ ទាញយក</button>` : ""}
-        <button type="button" class="ad-del" data-del="${n}">🗑 លុប</button>
-      </div>
-      <div class="ad-main">
-        <div class="ad-top"><span class="ad-num">${String(n).padStart(2, "0")}</span>
-          <label class="ad-hide"><input type="checkbox" data-f="hide" ${h ? "checked" : ""}> លាក់</label></div>
-        <input class="ad-input" data-f="name" value="${esc(p.name)}" placeholder="ឈ្មោះ" />
-        <input class="ad-input" data-f="place" value="${esc(p.place)}" placeholder="ទំហំ" />
-        <div class="ad-three">
-          <label>តម្លៃ ៛<input class="ad-input" data-f="price" type="number" inputmode="numeric" value="${p.price}" /></label>
-          <label>បញ្ចុះ ៛<input class="ad-input" data-f="sale" type="number" inputmode="numeric" value="${adminData.sale[n] || ""}" placeholder="—" /></label>
-          <label>ស្តុក<input class="ad-input" data-f="stock" type="number" min="0" inputmode="numeric" value="${adminData.stock[n] === undefined ? "" : adminData.stock[n]}" placeholder="∞" /></label>
-        </div>
-        <div class="ad-quick">
-          <span>បញ្ចុះលឿន៖</span>
-          <button type="button" class="ad-q" data-p="10">-10%</button>
-          <button type="button" class="ad-q" data-p="20">-20%</button>
-          <button type="button" class="ad-q" data-p="30">-30%</button>
-          <button type="button" class="ad-q clr" data-p="0">✕</button>
-          <button type="button" class="ad-q stk" data-p="soldout">អស់ស្តុក</button>
-        </div>
-      </div></div>`;
-  }).join("");
-  return out || `<div class="ad-empty">រកមិនឃើញទំនិញ</div>`;
-}
-
-let savedTimer;
-function flashSaved() {
-  const el = document.getElementById("ad-saved");
-  if (!el) return;
-  el.classList.add("show");
-  clearTimeout(savedTimer);
-  savedTimer = setTimeout(() => el.classList.remove("show"), 1200);
-}
-
-async function getStats() {
-  const url = settings.statsUrl;
-  if (url) {
-    const key = (() => { try { return localStorage.getItem("statsKey") || ""; } catch (e) { return ""; } })();
-    const r = await fetch(`${url}${url.includes("?") ? "&" : "?"}key=${encodeURIComponent(key)}`);
-    if (!r.ok) throw new Error(r.status === 401 ? "key" : "http " + r.status);
-    return { data: await r.json(), remote: true };
-  }
-  let d = { view: {}, order: {} };
-  try { d = JSON.parse(localStorage.getItem("stats") || "null") || d; } catch (e) {}
-  return { data: d, remote: false };
-}
-
-async function renderStats() {
-  const box = document.getElementById("st-body");
-  if (!box) return;
-  box.innerHTML = `<div class="ad-empty">កំពុងផ្ទុក...</div>`;
-  const keyUI = settings.statsUrl
-    ? `<label class="ad-field">Key សម្រាប់មើលស្ថិតិ<input class="ad-input" id="st-key" type="password" value="${esc((() => { try { return localStorage.getItem("statsKey") || ""; } catch (e) { return ""; } })())}" placeholder="ADMIN_KEY របស់ Worker" /></label>` : "";
-  let res;
-  try { res = await getStats(); }
-  catch (e) {
-    box.innerHTML = keyUI + `<div class="ad-empty">${e.message === "key" ? "Key មិនត្រឹមត្រូវ" : "ផ្ទុកស្ថិតិមិនបាន"}</div><button class="ad-btn" id="st-refresh" type="button">ព្យាយាមម្តងទៀត</button>`;
-    wireStats(box); return;
-  }
-  const { view = {}, order = {} } = res.data;
-  const sum = (o) => Object.values(o).reduce((a, b) => a + Number(b || 0), 0);
-  const tv = sum(view), to = sum(order);
-  const ids = new Set([...Object.keys(view), ...Object.keys(order)]);
-  const rows = [...ids].map((n) => ({ n: Number(n), v: Number(view[n] || 0), o: Number(order[n] || 0) }))
-    .filter((r) => PRODUCTS[r.n - 1])
-    .sort((a, b) => b.o - a.o || b.v - a.v).slice(0, 10);
-  const max = Math.max(1, ...rows.map((r) => Math.max(r.o, r.v)));
-  box.innerHTML = keyUI + `
-    <div class="st-cards">
-      <div class="st-card"><b>${tv}</b><span>មើលរូប</span></div>
-      <div class="st-card"><b>${to}</b><span>ចុចកម្មង់</span></div>
-      <div class="st-card"><b>${tv ? Math.round((to / tv) * 100) : 0}%</b><span>កម្មង់ / មើល</span></div>
-    </div>
-    <div class="ad-label">ទំនិញនិយម (កំពូល 10)</div>
-    ${rows.length ? rows.map((r, k) => `
-      <div class="st-row">
-        <span class="st-rank">${k + 1}</span>
-        <img class="st-thumb" src="${photoOf(r.n)}" alt="" onerror="this.style.visibility='hidden'" />
-        <div class="st-info">
-          <div class="st-name">${String(r.n).padStart(2, "0")} · ${esc(PRODUCTS[r.n - 1].name)}</div>
-          <div class="st-bar"><i style="width:${(r.o / max) * 100}%"></i></div>
-          <div class="st-meta">កម្មង់ ${r.o} · មើល ${r.v}</div>
-        </div>
-      </div>`).join("") : `<div class="ad-empty">មិនទាន់មានទិន្នន័យ</div>`}
-    <div class="ad-hint">${res.remote ? "ទិន្នន័យពីអតិថិជនទាំងអស់ (តាម Worker)" : "រាប់តែលើឧបករណ៍នេះប៉ុណ្ណោះ។ ដើម្បីឃើញពីអតិថិជនទាំងអស់ ត្រូវដាក់ URL Worker ក្នុងផ្ទាំង ហាង។"}</div>
-    <div class="ad-actions"><button class="ad-btn" id="st-refresh" type="button">ផ្ទុកថ្មី</button>${res.remote ? "" : `<button class="ad-btn danger" id="st-clear" type="button">លុបស្ថិតិ</button>`}</div>`;
-  wireStats(box);
-}
-function wireStats(box) {
-  const r = box.querySelector("#st-refresh"), c = box.querySelector("#st-clear"), k = box.querySelector("#st-key");
-  if (k) k.addEventListener("change", () => { try { localStorage.setItem("statsKey", k.value); } catch (e) {} renderStats(); });
-  if (r) r.addEventListener("click", renderStats);
-  if (c) c.addEventListener("click", () => { if (confirm("លុបស្ថិតិលើឧបករណ៍នេះ?")) { try { localStorage.removeItem("stats"); } catch (e) {} renderStats(); } });
-}
-
-function openAdminPanel() {
-  adminLogin.classList.remove("open");
-  const body = document.getElementById("ad-body");
-  body.innerHTML = `
-    <div class="ad-stats" id="ad-stats"></div>
-    <div class="ad-actions">
-      <button class="ad-btn danger" id="ad-logout" type="button">ចាកចេញ</button>
-    </div>
-    <div class="ad-note">ការកែនៅទីនេះមើលឃើញតែលើឧបករណ៍នេះប៉ុណ្ណោះ អតិថិជនមិនឃើញទេ។</div>
-    <details class="ad-pw"><summary>ប្តូរពាក្យសម្ងាត់</summary>
-      <input class="ad-input" id="ad-newpw" type="text" placeholder="ពាក្យសម្ងាត់ថ្មី" />
-      <button class="ad-btn" id="ad-mkhash" type="button">បង្កើតកូដ hash</button>
-      <textarea class="ad-hash" id="ad-hash" readonly style="display:none;height:60px"></textarea>
-    </details>
-    <div class="ad-tabs" id="ad-tabs">
-      <button class="ad-tab active" data-tab="products" type="button">ទំនិញ</button>
-      <button class="ad-tab" data-tab="design" type="button">រចនា</button>
-      <button class="ad-tab" data-tab="shop" type="button">ហាង</button>
-      <button class="ad-tab" data-tab="promo" type="button">ផ្សព្វផ្សាយ</button>
-      <button class="ad-tab" data-tab="stats" type="button">ស្ថិតិ</button>
-    </div>
-
-    <div class="ad-panel" data-tab="products">
-      <button class="ad-btn ad-addbtn" id="ad-add-open" type="button">＋ ផុសទំនិញថ្មី</button>
-      <div class="ad-addform" id="ad-addform" style="display:none">
-        <label class="ad-photo-pick" id="ad-photo-pick">
-          <input type="file" accept="image/*" id="ad-new-file" hidden />
-          <span id="ad-photo-label">📷 ជ្រើសរើសរូបទំនិញ</span>
-        </label>
-        <input class="ad-input" id="ad-new-name" placeholder="ឈ្មោះទំនិញ" />
-        <input class="ad-input" id="ad-new-place" placeholder="ទំហំ ឧ. ទំហំ S - XL ឬ Free Size" />
-        <input class="ad-input" id="ad-new-price" type="number" inputmode="numeric" placeholder="តម្លៃ (៛)" />
-        <div class="ad-addrow">
-          <button class="sheet-confirm" id="ad-add-save" type="button">ផុសទំនិញ</button>
-          <button class="sheet-cancel" id="ad-add-cancel" type="button">បោះបង់</button>
-        </div>
-      </div>
-      <input class="ad-input" id="ad-search" placeholder="ស្វែងរកឈ្មោះ ឬលេខ..." />
-      <div class="ad-filters" id="ad-filters">
-        <button type="button" class="on" data-flt="all">ទាំងអស់</button>
-        <button type="button" data-flt="sale">កំពុងបញ្ចុះ</button>
-        <button type="button" data-flt="hidden">ទំនិញលាក់</button>
-        <button type="button" data-flt="out">អស់ស្តុក</button>
-      </div>
-      <div class="ad-list" id="ad-list">${adminRows("")}</div>
-    </div>
-
-    <div class="ad-panel" data-tab="design" style="display:none">
-      <div class="ad-label">ពណ៌ទំព័រ</div>
-      <div class="ad-swatches" id="ad-swatches">
-        ${[["#C2566E","ផ្កាឈូក"],["#D6336C","ក្រហមផ្កាឈូក"],["#B98A3E","មាស"],["#3F7D5C","បៃតង"],["#2F6DB5","ខៀវ"],["#7B4FB8","ស្វាយ"],["#2B2B2B","ខ្មៅ"]]
-          .map(([c, n]) => `<button type="button" class="ad-sw${settings.accent.toLowerCase() === c.toLowerCase() ? " on" : ""}" data-c="${c}" style="background:${c}" aria-label="${n}"></button>`).join("")}
-      </div>
-      <label class="ad-field">ពណ៌ផ្ទាល់ខ្លួន<input type="color" data-s="accent" value="${esc(settings.accent)}" id="ad-color" /></label>
-      <label class="ad-field">ឈ្មោះហាង<input class="ad-input" data-s="name" value="${esc(settings.name)}" /></label>
-      <label class="ad-field">ខ្សែប្រកាសខាងលើបំផុត (ទទេ = លាក់)<input class="ad-input" data-s="announce" value="${esc(settings.announce)}" /></label>
-      <label class="ad-field">ស្លាកខាងលើចំណងជើង<input class="ad-input" data-s="eyebrow" value="${esc(settings.eyebrow)}" /></label>
-      <label class="ad-field">ពាក្យពណ៌នា<textarea class="ad-input" data-s="tagline">${esc(settings.tagline)}</textarea></label>
-      <label class="ad-field">អក្សររត់ (ញែកដោយ |)<input class="ad-input" data-s="marquee" value="${esc(settings.marquee)}" /></label>
-      <label class="ad-field">អក្សរអរគុណខាងក្រោម<input class="ad-input" data-s="thanks" value="${esc(settings.thanks)}" /></label>
-      <label class="ad-check"><input type="checkbox" data-s="showMarquee" ${settings.showMarquee ? "checked" : ""}> បង្ហាញបន្ទាត់អក្សររត់</label>
-      <label class="ad-check"><input type="checkbox" data-s="showFlash" ${settings.showFlash ? "checked" : ""}> បង្ហាញខ្សែបញ្ចុះតម្លៃ</label>
-    </div>
-
-    <div class="ad-panel" data-tab="promo" style="display:none">
-      <label class="ad-check"><input type="checkbox" data-s="showPromo" ${settings.showPromo === false ? "" : "checked"}> បង្ហាញផ្ទាំងផ្សព្វផ្សាយធំ</label>
-      ${(settings.banners || []).slice(0, 3).map((b, i) => `
-        <div class="bn-card" data-bi="${i}">
-          <div class="ad-label">ផ្ទាំងទី ${i + 1}</div>
-          <label class="ad-field">ចំណងជើង<input class="ad-input" data-bf="title" value="${esc(b.title)}" /></label>
-          <label class="ad-field">ពាក្យតូចខាងលើ<input class="ad-input" data-bf="sub" value="${esc(b.sub)}" /></label>
-          <label class="ad-field">អក្សរលើប៊ូតុង (ទទេ = គ្មានប៊ូតុង)<input class="ad-input" data-bf="btn" value="${esc(b.btn)}" /></label>
-          <label class="ad-field">ចុចហើយទៅ
-            <select class="ad-input" data-bf="target">
-              ${[["all", "ទំនិញទាំងអស់"], ["sale", "បញ្ចុះតម្លៃ"], ["top", "អាវ"], ["bottom", "ខោ"], ["dress", "សំពត់ · រ៉ូប"], ["set", "ឈុត"], ["acc", "គ្រឿងបន្ថែម"]]
-                .map(([k, n]) => `<option value="${k}"${b.target === k ? " selected" : ""}>${n}</option>`).join("")}
-              ${/^https?:/i.test(b.target) ? `<option value="${esc(b.target)}" selected>តំណ៖ ${esc(b.target)}</option>` : ""}
-            </select></label>
-          <label class="ad-field">ឬដាក់តំណ (https://...)<input class="ad-input" data-bf="link" placeholder="https://" value="${/^https?:/i.test(b.target) ? esc(b.target) : ""}" /></label>
-          <div class="ad-two">
-            <label>ពណ៌ទី 1<input type="color" data-bf="c1" value="${esc(b.c1 || "#333333")}" /></label>
-            <label>ពណ៌ទី 2<input type="color" data-bf="c2" value="${esc(b.c2 || "#666666")}" /></label>
-          </div>
-          <label class="ad-photo-btn bn-photo">📷 ដាក់រូបផ្ទាំងទី ${i + 1}<input type="file" accept="image/*" data-bimg="${i + 1}" hidden></label>
-          <div class="ad-hint">រូបដែលដាក់នៅទីនេះឃើញតែលើទូរស័ព្ទនេះ។ ដើម្បីឱ្យអតិថិជនឃើញ ត្រូវ upload ឯកសារឈ្មោះ Banner${i + 1}.jpg (ទំហំណែនាំ 1400×600) ទៅជាមួយ index.html</div>
-        </div>`).join("")}
-    </div>
-
-    <div class="ad-panel" data-tab="stats" style="display:none">
-      <div id="st-body"><div class="ad-empty">កំពុងផ្ទុក...</div></div>
-    </div>
-
-    <div class="ad-panel" data-tab="shop" style="display:none">
-      <label class="ad-field">លេខទូរស័ព្ទ<input class="ad-input" data-s="phone" inputmode="tel" value="${esc(settings.phone)}" /></label>
-      <label class="ad-field">Username Telegram (គ្មាន @)<input class="ad-input" data-s="telegram" value="${esc(settings.telegram)}" /></label>
-      <label class="ad-field">តំណ Messenger / Facebook<input class="ad-input" data-s="messenger" value="${esc(settings.messenger)}" /></label>
-      <label class="ad-field">ចំណងជើងខ្សែបញ្ចុះតម្លៃ<input class="ad-input" data-s="flashTitle" value="${esc(settings.flashTitle)}" /></label>
-      <label class="ad-field">ចំនួនទំនិញបញ្ចុះក្នុងមួយរង្វង់<input class="ad-input" data-s="saleCount" data-num="1" type="number" min="1" max="${PRODUCTS.length}" inputmode="numeric" value="${settings.saleCount}" /></label>
-      <label class="ad-field">ប្តូរទំនិញបញ្ចុះរៀងរាល់ (ម៉ោង)
-        <select class="ad-input" data-s="saleHours" data-num="1">
-          ${[1, 2, 3, 4, 6, 8, 12, 24].map((h) => `<option value="${h}"${settings.saleHours === h ? " selected" : ""}>${h} ម៉ោង</option>`).join("")}
-        </select></label>
-      <div class="ad-hint">ម៉ោងគិតតាមម៉ោងកម្ពុជា ចាប់ពី 00:00</div>
-      <label class="ad-field">URL Worker ស្ថិតិ (ទទេ = រាប់លើឧបករណ៍នេះប៉ុណ្ណោះ)<input class="ad-input" data-s="statsUrl" value="${esc(settings.statsUrl)}" placeholder="https://stats.xxx.workers.dev" /></label>
-    </div>`;
-  const list = document.getElementById("ad-list");
-  const stats = () => {
-    document.getElementById("ad-stats").textContent =
-      `${PRODUCTS.length - (adminData.deleted || []).length} ទំនិញ · លាក់ ${adminData.hidden.length} · អស់ស្តុក ${Object.values(adminData.stock).filter((v) => v !== "" && Number(v) === 0).length} · បញ្ចុះដោយដៃ ${Object.keys(adminData.sale).length}`;
-  };
-  stats();
-
-  list.onchange = (e) => {
-    const el = e.target, row = el.closest(".ad-row");
-    if (!row) return;
-    const n = Number(row.dataset.n), f = el.dataset.f, p = PRODUCTS[n - 1];
-    if (el.dataset.img) {                         // ប្តូររូបទំនិញ
-      const file = el.files && el.files[0];
-      if (!file) return;
-      processImage(file).then((data) => {
-        adminImages[n] = data;
-        if (!saveImages()) { delete adminImages[n]; return; }
-        flashSaved(); refreshSite();
-        list.innerHTML = adminRows(document.getElementById("ad-search").value);
-      }).catch(() => alert("បើករូបមិនបាន"));
-      return;
-    }
-    if (f === "name" || f === "place") p[f] = el.value.trim();
-    else if (f === "price") { p.price = Math.max(0, Math.round(Number(el.value) || 0)); }
-    else if (f === "stock") {
-      if (el.value === "") delete adminData.stock[n];
-      else adminData.stock[n] = Math.max(0, Math.round(Number(el.value) || 0));
-    }
-    else if (f === "sale") {
-      const v = Math.round(Number(el.value) || 0);
-      if (v > 0) adminData.sale[n] = v; else delete adminData.sale[n];
-    } else if (f === "hide") {
-      const set = new Set(adminData.hidden);
-      el.checked ? set.add(n) : set.delete(n);
-      adminData.hidden = [...set].sort((a, b) => a - b);
-      row.classList.toggle("is-hidden", el.checked);
-    }
-    saveAdmin(); refreshSite(); stats();
-  };
-  adFilter = "all";
-  const searchEl = document.getElementById("ad-search");
-  searchEl.addEventListener("input", (e) => { list.innerHTML = adminRows(e.target.value); });
-  document.querySelectorAll("#ad-filters button").forEach((b) => b.addEventListener("click", () => {
-    adFilter = b.dataset.flt;
-    document.querySelectorAll("#ad-filters button").forEach((x) => x.classList.toggle("on", x === b));
-    list.innerHTML = adminRows(searchEl.value);
-    list.scrollTop = 0;
-  }));
-  // បញ្ចុះតម្លៃលឿន (-10% / -20% / -30% / លុប)
-  list.addEventListener("click", (e) => {
-    const dl = e.target.closest(".ad-dl");
-    if (dl) { downloadPhoto(Number(dl.dataset.dl)); return; }
-    const del = e.target.closest(".ad-del");
-    if (del) {
-      const n = Number(del.dataset.del);
-      if (!n || !PRODUCTS[n - 1]) return;
-      // ចុចពីរដង (មិនប្រើ confirm ព្រោះ browser ក្នុងកម្មវិធីខ្លះរារាំង)
-      if (del.dataset.arm !== "1") {
-        del.dataset.arm = "1"; del.dataset.txt = del.textContent; del.textContent = "⚠ ចុចម្តងទៀត";
-        del.style.background = "#D0021B"; del.style.color = "#fff";
-        setTimeout(() => { if (del.isConnected) { del.dataset.arm = ""; del.textContent = del.dataset.txt; del.style.background = ""; del.style.color = ""; } }, 3000);
-        return;
-      }
-      if (n === PRODUCTS.length && n > ORIG_PRODUCTS.length) PRODUCTS.pop();   // ទំនិញថ្មីចុងក្រោយ → លុបចេញពិតប្រាកដ
-      else if (!adminData.deleted.includes(n)) adminData.deleted.push(n);       // ផ្សេងទៀត → លុប (រក្សាលេខទំនិញដដែល)
-      deleteStoredImage(n); delete adminImages[n]; delete adminData.stock[n]; delete adminData.sale[n];
-      adminData.hidden = adminData.hidden.filter((x) => x !== n);
-      saveImages(); saveAdmin(); refreshSite(); stats();
-      list.innerHTML = adminRows(document.getElementById("ad-search").value);
-      return;
-    }
-    const btn = e.target.closest(".ad-q");
-    if (!btn) return;
-    const row = btn.closest(".ad-row"), n = Number(row.dataset.n), price = PRODUCTS[n - 1].price;
-    if (btn.dataset.p === "soldout") {
-      adminData.stock[n] = 0;
-      row.querySelector('[data-f="stock"]').value = 0;
-      saveAdmin(); refreshSite(); stats();
-      return;
-    }
-    const pct = Number(btn.dataset.p);
-    const input = row.querySelector('[data-f="sale"]');
-    if (!pct) { delete adminData.sale[n]; input.value = ""; }
-    else {
-      let np = Math.round((price * (100 - pct)) / 100 / 1000) * 1000;
-      if (np >= price) np = price - 1000;
-      if (np <= 0) return;
-      adminData.sale[n] = np; input.value = np;
-    }
-    saveAdmin(); refreshSite(); stats();
-  });
-
-  // tabs
-  body.querySelectorAll(".ad-tab").forEach((t) => t.addEventListener("click", () => {
-    body.querySelectorAll(".ad-tab").forEach((x) => x.classList.toggle("active", x === t));
-    body.querySelectorAll(".ad-panel").forEach((pn) => (pn.style.display = pn.dataset.tab === t.dataset.tab ? "" : "none"));
-    if (t.dataset.tab === "stats") renderStats();
-  }));
-
-  // ផុសទំនិញថ្មី
-  let newPhoto = "";
-  const addForm = document.getElementById("ad-addform");
-  const resetAddForm = () => {
-    newPhoto = "";
-    ["ad-new-name", "ad-new-place", "ad-new-price"].forEach((id) => (document.getElementById(id).value = ""));
-    document.getElementById("ad-new-file").value = "";
-    const pick = document.getElementById("ad-photo-pick");
-    pick.style.backgroundImage = ""; pick.classList.remove("has");
-    document.getElementById("ad-photo-label").textContent = "📷 ជ្រើសរើសរូបទំនិញ";
-  };
-  document.getElementById("ad-add-open").addEventListener("click", () => {
-    addForm.style.display = addForm.style.display === "none" ? "" : "none";
-  });
-  document.getElementById("ad-add-cancel").addEventListener("click", () => { resetAddForm(); addForm.style.display = "none"; });
-  document.getElementById("ad-new-file").addEventListener("change", (e) => {
-    const f = e.target.files && e.target.files[0];
-    if (!f) return;
-    processImage(f).then((data) => {
-      newPhoto = data;
-      const pick = document.getElementById("ad-photo-pick");
-      pick.style.backgroundImage = `url("${data}")`; pick.classList.add("has");
-      document.getElementById("ad-photo-label").textContent = "📷 ប្តូររូប";
-    }).catch(() => alert("បើករូបមិនបាន"));
-  });
-  document.getElementById("ad-add-save").addEventListener("click", () => {
-    const name = document.getElementById("ad-new-name").value.trim();
-    const place = document.getElementById("ad-new-place").value.trim() || "Free Size";
-    const price = Math.round(Number(document.getElementById("ad-new-price").value) || 0);
-    if (!name || price <= 0) { alert("សូមបំពេញឈ្មោះ និងតម្លៃ"); return; }
-    PRODUCTS.push({ name, place, price });
-    const n = PRODUCTS.length;
-    if (newPhoto) {
-      adminImages[n] = newPhoto;
-      if (!saveImages()) delete adminImages[n];
-    }
-    saveAdmin(); refreshSite(); stats();
-    resetAddForm(); addForm.style.display = "none";
-    searchEl.value = "";
-    adFilter = "all";
-    document.querySelectorAll("#ad-filters button").forEach((x) => x.classList.toggle("on", x.dataset.flt === "all"));
-    list.innerHTML = adminRows("");
-    list.lastElementChild && list.lastElementChild.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
-
-  // settings (live)
-  const commitSetting = (k) => {
-    rebuildSettings(); saveAdmin(); applySettings();
-    if (k === "saleCount" || k === "saleHours") { currentPeriod = periodKey(); refreshSite(); tickTimer(); }
-  };
-  body.addEventListener("input", (e) => {
-    const el = e.target, k = el.dataset && el.dataset.s;
-    if (!k) return;
-    let v;
-    if (el.type === "checkbox") v = el.checked;
-    else if (el.dataset.num) { v = Math.round(Number(el.value)); if (!(v >= 1)) return; if (k === "saleCount") v = Math.min(v, PRODUCTS.length); }
-    else v = el.value;
-    adminData.settings[k] = v;
-    if (k === "accent") body.querySelectorAll(".ad-sw").forEach((b) => b.classList.toggle("on", b.dataset.c.toLowerCase() === String(v).toLowerCase()));
-    commitSetting(k);
-  });
-  body.querySelectorAll(".ad-sw").forEach((b) => b.addEventListener("click", () => {
-    adminData.settings.accent = b.dataset.c;
-    document.getElementById("ad-color").value = b.dataset.c;
-    body.querySelectorAll(".ad-sw").forEach((x) => x.classList.toggle("on", x === b));
-    commitSetting("accent");
-  }));
-
-  document.getElementById("ad-logout").addEventListener("click", () => {
-    try { localStorage.removeItem("adminOn"); } catch (e) {}
-    location.reload();
-  });
-  document.getElementById("ad-mkhash").addEventListener("click", async () => {
-    const v = document.getElementById("ad-newpw").value;
-    const out = document.getElementById("ad-hash");
-    if (!v) return;
-    try {
-      out.value = `const ADMIN_HASH = "${await sha256(v)}";`;
-      out.style.display = "block"; out.select();
-    } catch (e) { out.value = "ត្រូវការ https"; out.style.display = "block"; }
-  });
-  // ផ្ទាំងផ្សព្វផ្សាយ
-  const promoPanel = body.querySelector('[data-tab="promo"]');
-  const editBanner = (i, f, v) => {
-    const arr = (adminData.settings.banners || settings.banners).map((b) => ({ ...b }));
-    if (!arr[i]) return;
-    if (f === "link") { if (/^https?:/i.test(v)) arr[i].target = v; else if (/^https?:/i.test(arr[i].target)) arr[i].target = "all"; }
-    else arr[i][f] = v;
-    adminData.settings.banners = arr;
-    rebuildSettings(); saveAdmin(); renderPromo();
-  };
-  promoPanel.addEventListener("input", (e) => {
-    const el = e.target, card = el.closest(".bn-card");
-    if (card && el.dataset.bf && el.dataset.bf !== "target") editBanner(Number(card.dataset.bi), el.dataset.bf, el.value);
-  });
-  promoPanel.addEventListener("change", (e) => {
-    const el = e.target, card = el.closest(".bn-card");
-    if (!card) return;
-    if (el.dataset.bf === "target") { editBanner(Number(card.dataset.bi), "target", el.value); const lk = card.querySelector('[data-bf="link"]'); if (lk) lk.value = ""; }
-    if (el.dataset.bimg) {
-      const f = el.files && el.files[0];
-      if (!f) return;
-      processImage(f, 1600).then((data) => {
-        adminImages["b" + el.dataset.bimg] = data;
-        if (!saveImages()) { delete adminImages["b" + el.dataset.bimg]; return; }
-        flashSaved(); renderPromo();
-      }).catch(() => alert("បើករូបមិនបាន"));
-    }
-  });
-  adminSheet.classList.add("open");
-}
-document.getElementById("ad-close").addEventListener("click", () => adminSheet.classList.remove("open"));
-document.getElementById("ad-close2").addEventListener("click", () => adminSheet.classList.remove("open"));
-adminSheet.addEventListener("click", (e) => { if (e.target === adminSheet) adminSheet.classList.remove("open"); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") { adminSheet.classList.remove("open"); adminLogin.classList.remove("open"); } });
-
-// ចូល Admin៖ ចុចឈ្មោះហាងខាងលើ 5 ដង ឬបន្ថែម #admin ក្នុងតំណ
-const brandEl = document.querySelector(".brand-box");
-let brandTaps = 0, brandTimer;
-brandEl.addEventListener("pointerdown", () => {
-  brandTaps++;
-  clearTimeout(brandTimer);
-  brandTimer = setTimeout(() => (brandTaps = 0), 2500);
-  if (brandTaps >= 5) { brandTaps = 0; openAdminLogin(); }
-});
-const checkAdminHash = () => { if (location.hash === "#admin") openAdminLogin(); };
-window.addEventListener("hashchange", checkAdminHash);
-checkAdminHash();
 applySettings();
 
 // Block double-tap zoom
@@ -2784,6 +1875,10 @@ lightbox.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") lightbox.classList.remove("open");
 });
+
+// ត្រឡប់មកពី admin → ផ្ទុកទំព័រឡើងវិញ ដើម្បីឃើញរូបថ្មី
+window.addEventListener("pageshow", (e) => { if (e.persisted && adminOn) location.reload(); });
+window.addEventListener("storage", (e) => { if (e.key === "adminImages" && adminOn) location.reload(); });
 </script>
 </body>
 </html>

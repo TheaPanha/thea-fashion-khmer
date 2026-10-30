@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="km">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Noto+Serif+Khmer:wght@500;600;700&family=Noto+Sans+Khmer:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+<style>
+  :root {
+    --linen: #F7F1EA;
+    --card: #FFFCF6;
+    --border: #E6D3C8;
+    --ink: #241B12;
+    --muted: #8A7468;
+    --clay: #C2566E;
+    --clay-dark: #9E3A52;
+    --clay-light: #D2667E;
+    --clay-rgb: 194,86,110;
+    --moss: #4B6B4A;
+    --brass: #B98A3E;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--linen); color: var(--ink); font-family: "Noto Sans Khmer", -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  button, input, select, textarea { font-family: inherit; }
+  html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+  .ad-login { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; background: linear-gradient(135deg, #241B12, #3A2A20); }
+  .ad-card { width: 100%; max-width: 380px; background: var(--card); border-radius: 22px; padding: 26px 22px 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .ad-card h1 { font-family: "Playfair Display", "Noto Serif Khmer", Georgia, serif; font-size: 28px; margin: 0 0 4px; }
+  .ad-top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #1A1A1A; color: #fff; }
+  .ad-top h1 { margin: 0; font-family: "Playfair Display", Georgia, serif; font-size: 20px; letter-spacing: 0.04em; }
+  .ad-top .ad-saved { margin-left: auto; margin-right: 0; background: rgba(63,125,92,0.25); color: #9FE0B8; }
+  .ad-site { color: #FFE08A; font-size: 13px; font-weight: 600; text-decoration: none; padding: 7px 12px; border: 1px solid rgba(255,224,138,0.5); border-radius: 999px; white-space: nowrap; }
+  .ad-wrap { max-width: 760px; margin: 0 auto; padding: 16px 16px 60px; }
+  .ad-wrap h3 { margin: 0; }
+  .ad-photo-btn.bn-photo { width: auto; display: inline-block; padding: 10px 18px; font-size: 13px; margin: 6px 0 4px; }
+
+  .sheet-confirm {
+    width: 100%; padding: 14px; border: none; border-radius: 999px;
+    background: linear-gradient(135deg, var(--clay), var(--clay-dark)); color: #fff;
+    font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 6px 16px rgba(var(--clay-rgb),0.4);
+    transition: opacity 0.2s ease, transform 0.15s ease;
+  }
+  .sheet-confirm:disabled { opacity: 0.45; box-shadow: none; cursor: not-allowed; }
+  .sheet-confirm:not(:disabled):active { transform: scale(0.98); }
+  .sheet-cancel {
+    width: 100%; margin-top: 8px; padding: 12px; border: none; background: none;
+    color: var(--muted); font-family: inherit; font-size: 14px; cursor: pointer;
+  }
+  .ad-input {
+    width: 100%; padding: 11px 12px; margin-bottom: 8px;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: #fff; color: var(--ink); font-family: inherit; font-size: 16px;
+  }
+  .ad-sub { margin: -2px 0 14px; color: var(--muted); font-size: 13px; }
+  .ad-err { min-height: 20px; margin-bottom: 8px; color: #B8213F; font-size: 13px; }
+  .admin-sheet { max-width: 720px; }
+  .ad-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .ad-head h3 { margin: 0; }
+  .ad-x { border: none; background: var(--border); width: 34px; height: 34px; border-radius: 50%; font-size: 15px; cursor: pointer; }
+  .ad-stats { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .ad-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .ad-btn {
+    padding: 9px 14px; border-radius: 999px; border: 1.5px solid #1A1A1A;
+    background: transparent; color: #1A1A1A; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .ad-btn:hover { background: #1A1A1A; color: #fff; }
+  .ad-btn.danger { border-color: #B8213F; color: #B8213F; }
+  .ad-btn.danger:hover { background: #B8213F; color: #fff; }
+  .ad-note { font-size: 12px; line-height: 1.6; color: var(--muted); background: rgba(185,138,62,0.12); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+  .ad-code, .ad-hash {
+    width: 100%; height: 120px; margin-bottom: 10px; padding: 10px;
+    border: 1px solid var(--border); border-radius: 10px; font-family: monospace; font-size: 11px; background: #fff;
+  }
+  .ad-pw { margin-bottom: 10px; font-size: 13px; }
+  .ad-pw summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
+  .ad-list { max-height: 48vh; overflow-y: auto; }
+  .ad-row { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .ad-row.is-hidden { opacity: 0.5; }
+  .ad-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .ad-num { font-family: "Playfair Display", Georgia, serif; font-weight: 700; color: var(--clay); letter-spacing: 0.1em; }
+  .ad-hide { font-size: 13px; display: flex; align-items: center; gap: 6px; }
+  .ad-two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ad-two label { font-size: 12px; color: var(--muted); }
+  .ad-two .ad-input { margin: 3px 0 0; }
+  .ad-tabs { display: flex; gap: 6px; margin: 4px 0 12px; border-bottom: 1px solid var(--border); }
+  .ad-tab {
+    flex: 1; padding: 10px 6px; border: none; background: none; cursor: pointer;
+    font-family: inherit; font-size: 14px; font-weight: 600; color: var(--muted);
+    border-bottom: 3px solid transparent; margin-bottom: -1px;
+  }
+  .ad-tab.active { color: #1A1A1A; border-bottom-color: var(--clay); }
+  .ad-label { font-size: 13px; font-weight: 600; color: var(--muted); margin: 6px 0 8px; }
+  .ad-swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+  .ad-sw {
+    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+    border: 3px solid #fff; box-shadow: 0 0 0 1.5px var(--border), 0 3px 8px rgba(0,0,0,0.18);
+  }
+  .ad-sw.on { box-shadow: 0 0 0 2.5px #1A1A1A, 0 3px 8px rgba(0,0,0,0.18); }
+  .ad-field { display: block; margin-bottom: 10px; font-size: 12px; color: var(--muted); }
+  .ad-field .ad-input { margin: 4px 0 0; }
+  .ad-field textarea.ad-input { min-height: 64px; resize: vertical; }
+  .ad-field input[type="color"] { width: 100%; height: 44px; padding: 3px; border-radius: 10px; border: 1px solid var(--border); background: #fff; margin-top: 4px; }
+  .ad-check { display: flex; align-items: center; gap: 8px; font-size: 14px; margin: 8px 0; color: var(--ink); }
+  .ad-check input { width: 18px; height: 18px; }
+  .ad-hint { font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
+  .ad-saved {
+    margin-left: auto; margin-right: 10px; font-size: 12px; font-weight: 600; color: #3F7D5C;
+    background: rgba(63,125,92,0.12); padding: 4px 10px; border-radius: 999px;
+    opacity: 0; transition: opacity 0.25s ease;
+  }
+  .ad-saved.show { opacity: 1; }
+  .ad-filters { display: flex; gap: 6px; margin-bottom: 8px; }
+  .ad-filters button {
+    padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border);
+    background: #fff; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--ink);
+  }
+  .ad-filters button.on { background: #1A1A1A; border-color: #1A1A1A; color: #fff; }
+  .ad-list { max-height: 56vh; }
+  .ad-row { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: start; }
+  .ad-thumb {
+    width: 74px; height: 98px; object-fit: cover; border-radius: 10px;
+    background: #E9DBC0; box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  }
+  .ad-main { min-width: 0; }
+  .ad-quick { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .ad-q {
+    padding: 5px 10px; border-radius: 999px; border: 1px solid #E8445F; background: #fff; color: #B8213F;
+    font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+  }
+  .ad-q:hover { background: #E8445F; color: #fff; }
+  .ad-q.clr { border-color: var(--border); color: var(--muted); }
+  .ad-empty { text-align: center; padding: 30px 0; color: var(--muted); font-size: 14px; }
+  .ad-three { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 6px; }
+  .ad-three label { font-size: 12px; color: var(--muted); }
+  .ad-three .ad-input { margin: 3px 0 0; padding: 10px 8px; }
+  .ad-q.stk { border-color: #1A1A1A; color: #1A1A1A; }
+  .ad-q.stk:hover { background: #1A1A1A; color: #fff; }
+  .st-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 4px 0 14px; }
+  .st-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 8px; text-align: center; }
+  .st-card b { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 24px; color: var(--clay); }
+  .st-card span { font-size: 11px; color: var(--muted); }
+  .st-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .st-rank { width: 22px; text-align: center; font-weight: 700; color: var(--clay); }
+  .st-thumb { width: 42px; height: 56px; object-fit: cover; border-radius: 8px; background: #E9DBC0; }
+  .st-info { flex: 1; min-width: 0; }
+  .st-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .st-bar { height: 6px; background: var(--border); border-radius: 999px; margin: 5px 0 3px; overflow: hidden; }
+  .st-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--clay), var(--brass)); border-radius: 999px; }
+  .st-meta { font-size: 11px; color: var(--muted); }
+  .admin-sheet {
+    display: flex; flex-direction: column;
+    height: 92vh; max-height: 92vh; overflow: hidden;
+    padding-bottom: 0;
+  }
+  .admin-sheet .ad-head { flex: 0 0 auto; padding-bottom: 6px; }
+  .admin-sheet #ad-body {
+    flex: 1; min-height: 0; overflow-y: auto;
+    -webkit-overflow-scrolling: touch; padding-bottom: 10px;
+  }
+  .ad-list { max-height: none; overflow: visible; }
+  .ad-foot {
+    flex: 0 0 auto; padding: 10px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--border); background: var(--card);
+  }
+  .ad-foot button {
+    width: 100%; padding: 13px; border: none; border-radius: 999px;
+    background: #1A1A1A; color: #fff; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .ad-x { width: 40px; height: 40px; font-size: 17px; flex: 0 0 auto; }
+  .ad-row.no-thumb { grid-template-columns: 1fr; }
+  .ad-side { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+  .ad-thumbwrap { width: 74px; height: 98px; border-radius: 10px; overflow: hidden; background: #E9DBC0; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+  .ad-thumbwrap .ad-thumb { width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; display: block; }
+  .ad-photo-btn, .ad-dl, .ad-del, .ad-delimg {
+    display: block; width: 74px; text-align: center; padding: 6px 2px;
+    border: 1px solid var(--border); border-radius: 999px; background: #fff; color: var(--ink);
+    font-family: inherit; font-size: 11px; font-weight: 600; cursor: pointer;
+  }
+  .ad-dl { border-color: #3F7D5C; color: #3F7D5C; }
+  .ad-del, .ad-delimg { border-color: #B8213F; color: #B8213F; }
+  .ad-addbtn { width: 100%; margin-bottom: 10px; padding: 12px; background: #1A1A1A; color: #fff; }
+  .ad-addbtn:hover { background: var(--clay); border-color: var(--clay); }
+  .ad-addform { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+  .ad-photo-pick {
+    display: flex; align-items: center; justify-content: center;
+    height: 170px; margin-bottom: 10px; border-radius: 14px; cursor: pointer;
+    border: 2px dashed var(--border); background: #FBF4E6 center / cover no-repeat;
+    color: var(--muted); font-size: 14px; font-weight: 600;
+  }
+  .ad-photo-pick.has { border-style: solid; color: #fff; }
+  .ad-photo-pick.has span { background: rgba(26,26,26,0.7); padding: 6px 14px; border-radius: 999px; }
+  .ad-addrow { margin-top: 4px; }
+  .ad-tabs { overflow-x: auto; scrollbar-width: none; }
+  .ad-tabs::-webkit-scrollbar { display: none; }
+  .ad-tab { flex: 1 0 auto; padding: 10px 12px; white-space: nowrap; }
+  .sheet-confirm { padding: 16px; font-size: 16px; }
+  @media (max-width: 640px) {
+    .ad-row { grid-template-columns: 58px 1fr; gap: 10px; }
+    .ad-thumbwrap { width: 58px; height: 78px; }
+    .ad-photo-btn, .ad-dl, .ad-del, .ad-delimg { width: 58px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+  <div class="ad-login" id="admin-login">
+    <div class="ad-card">
+      <h1>Admin</h1>
+      <p class="ad-sub">សម្រាប់ម្ចាស់ហាងប៉ុណ្ណោះ</p>
+      <input id="admin-pass" class="ad-input" type="password" placeholder="ពាក្យសម្ងាត់" autocomplete="current-password" />
+      <div class="ad-err" id="admin-err"></div>
+      <button class="sheet-confirm" id="admin-go" type="button">ចូល</button>
+    </div>
+  </div>
+
+  <div id="admin-app" style="display:none">
+    <div class="ad-top"><h1>Admin</h1><span class="ad-saved" id="ad-saved">រក្សាទុករួច ✓</span><a class="ad-site" href="index.html">មើលគេហទំព័រ</a></div>
+    <div class="ad-wrap"><div id="ad-body"></div></div>
+  </div>
+
+<script>
+const PRODUCTS = [
+  { name: "អាវយឺតកប្បាស", place: "ទំហំ S - XL", price: 35000 },
+  { name: "អាវប៉ូឡូ", place: "ទំហំ S - XL", price: 45000 },
+  { name: "អាវដៃវែង", place: "ទំហំ S - XL", price: 55000 },
+  { name: "អាវសឺមី", place: "ទំហំ S - XL", price: 60000 },
+  { name: "អាវក្រៅ", place: "ទំហំ S - XL", price: 120000 },
+  { name: "អាវកាឌីហ្គែន", place: "ទំហំ S - XL", price: 85000 },
+  { name: "អាវហូដី", place: "ទំហំ S - XL", price: 90000 },
+  { name: "អាវបាំងត្រជាក់", place: "ទំហំ M - XXL", price: 150000 },
+  { name: "ខោខូវប៊យ", place: "ទំហំ 28 - 36", price: 95000 },
+  { name: "ខោជើងវែង", place: "ទំហំ 28 - 36", price: 70000 },
+  { name: "ខោខ្លី", place: "ទំហំ 28 - 36", price: 40000 },
+  { name: "ខោលេគីន", place: "Free Size", price: 38000 },
+  { name: "ខោជើងធំ", place: "ទំហំ S - XL", price: 75000 },
+  { name: "ខោស្លាក់", place: "ទំហំ S - XL", price: 80000 },
+  { name: "សំពត់ខ្លី", place: "ទំហំ S - L", price: 55000 },
+  { name: "សំពត់វែង", place: "ទំហំ S - L", price: 75000 },
+  { name: "សំពត់ប៉ាក់ក្បាច់", place: "ទំហំ S - L", price: 90000 },
+  { name: "រ៉ូបខ្លី", place: "ទំហំ S - L", price: 110000 },
+  { name: "រ៉ូបវែង", place: "ទំហំ S - L", price: 140000 },
+  { name: "រ៉ូបពិធី", place: "ទំហំ S - L", price: 180000 },
+  { name: "អាវក្រុប", place: "ទំហំ S - L", price: 32000 },
+  { name: "អាវដៃខ្លីស្ត្រី", place: "ទំហំ S - L", price: 38000 },
+  { name: "អាវសូត្រ", place: "ទំហំ S - L", price: 130000 },
+  { name: "ឈុតពីរដុំ", place: "ទំហំ S - XL", price: 160000 },
+  { name: "ឈុតកីឡា", place: "ទំហំ M - XXL", price: 120000 },
+  { name: "អាវកីឡា", place: "ទំហំ M - XXL", price: 48000 },
+  { name: "ឈុតគេង", place: "Free Size", price: 65000 },
+  { name: "អាវធំស្ត្រី", place: "ទំហំ S - XL", price: 125000 },
+  { name: "អាវក្រណាត់ត្បាញ", place: "ទំហំ S - XL", price: 85000 },
+  { name: "មួក", place: "Free Size", price: 20000 },
+  { name: "ខ្សែក្រវ៉ាត់", place: "Free Size", price: 28000 },
+  { name: "កន្សែងកសូត្រ", place: "Free Size", price: 45000 },
+  { name: "អាវយឺតបោះពុម្ព", place: "ទំហំ S - XL", price: 38000 },
+  { name: "អាវយឺតដៃវែង", place: "ទំហំ S - XL", price: 42000 },
+  { name: "អាវទ្រនាប់", place: "ទំហំ S - L", price: 30000 },
+  { name: "អាវក្រណាត់ទន់", place: "ទំហំ S - XL", price: 68000 },
+  { name: "អាវសឺមីឆ្នូត", place: "ទំហំ S - XL", price: 62000 },
+  { name: "អាវសឺមីពណ៌ស", place: "ទំហំ S - XL", price: 58000 },
+  { name: "អាវក្រៅស្បែក", place: "ទំហំ M - XXL", price: 210000 },
+  { name: "អាវក្រៅភ្លៀង", place: "ទំហំ M - XXL", price: 95000 },
+  { name: "អាវក្រៅកប្បាសក្រាស់", place: "ទំហំ M - XXL", price: 130000 },
+  { name: "អាវខ្សែ", place: "ទំហំ S - L", price: 36000 },
+  { name: "អាវក្រុបដៃវែង", place: "ទំហំ S - L", price: 40000 },
+  { name: "អាវក្រណាត់សូត្រស្ត្រី", place: "ទំហំ S - L", price: 72000 },
+  { name: "ខោខូវប៊យជើងវែងស្ត្រី", place: "ទំហំ 26 - 32", price: 98000 },
+  { name: "ខោខូវប៊យខ្លី", place: "ទំហំ 26 - 34", price: 52000 },
+  { name: "ខោក្រណាត់រឹង", place: "ទំហំ 28 - 36", price: 78000 },
+  { name: "ខោធ្វើការ", place: "ទំហំ 28 - 38", price: 82000 },
+  { name: "ខោកីឡា", place: "ទំហំ M - XXL", price: 45000 },
+  { name: "ខោគេង", place: "Free Size", price: 28000 },
+  { name: "សំពត់ក្រណាត់ទន់", place: "ទំហំ S - L", price: 62000 },
+  { name: "សំពត់ខ្លីពណ៌ខ្មៅ", place: "ទំហំ S - L", price: 48000 },
+  { name: "សំពត់ភ្លីត", place: "ទំហំ S - L", price: 68000 },
+  { name: "រ៉ូបកំណត់ចង្កេះ", place: "ទំហំ S - L", price: 125000 },
+  { name: "រ៉ូបសូត្រ", place: "ទំហំ S - L", price: 190000 },
+  { name: "រ៉ូបក្មេងស្រី", place: "ទំហំ 3 - 12 ឆ្នាំ", price: 75000 },
+  { name: "ឈុតក្មេងប្រុស", place: "ទំហំ 3 - 12 ឆ្នាំ", price: 68000 },
+  { name: "ឈុតគូស្នេហ៍", place: "ទំហំ S - XL", price: 150000 },
+  { name: "ស្រោមជើង", place: "Free Size", price: 6000 },
+  { name: "កាបូបស្ពាយ", place: "Free Size", price: 55000 },
+  { name: "ស្រោមដៃ", place: "Free Size", price: 22000 },
+  { name: "ខ្សែក", place: "Free Size", price: 18000 },
+  { name: "អាវយឺតគូ", place: "ទំហំ S - XL", price: 70000 },
+  { name: "ខោខូវប៊យជើងធំ", place: "ទំហំ 28 - 36", price: 92000 },
+  { name: "រ៉ូបវែងស្ត្រី", place: "ទំហំ S - L", price: 135000 },
+  { name: "អាវក្រៅស្ត្រី", place: "ទំហំ S - XL", price: 115000 },
+  { name: "ខោជើងវែងស្ត្រី", place: "ទំហំ S - XL", price: 72000 },
+  { name: "ឈុតសម្លៀកបំពាក់ក្មេង", place: "ទំហំ 3 - 12 ឆ្នាំ", price: 85000 },
+];
+
+// ===== កែនៅទីនេះ (ទំនិញ ការលាក់ ស្តុក ការបញ្ចុះដោយដៃ និងការកំណត់) =====
+const MANUAL_SALE = {};   // បញ្ចុះតម្លៃដោយដៃ { លេខទំនិញ: តម្លៃថ្មី } (ទទេ = ជ្រើសស្វ័យប្រវត្តិ)
+const HIDDEN = [];        // លេខទំនិញដែលលាក់
+const STOCK = {};         // ស្តុក { លេខទំនិញ: ចំនួននៅសល់ } (0 = អស់ស្តុក, គ្មានក្នុងបញ្ជី = គ្មានកំណត់)
+const SETTINGS = {        // ការកំណត់រចនា និងហាង
+  name: "Thea Fashion",
+  eyebrow: "NEW COLLECTION · ខោអាវទាន់សម័យ",
+  tagline: "ខោអាវស្អាតៗ ទាន់សម័យ គ្រប់ទំហំ សម្រាប់ជាប់ចិត្តអ្នកគ្រប់ថ្ងៃ",
+  marquee: "THEA FASHION|NEW COLLECTION|ខោអាវទាន់សម័យ",
+  flashTitle: "បញ្ចុះតម្លៃពិសេសថ្ងៃនេះ",
+  thanks: "សូមអរគុណដែលគាំទ្រហាងរបស់យើង 💗",
+  phone: "0968782682",
+  telegram: "theapanha04042004",
+  messenger: "https://www.facebook.com/share/1MQPrStX8p/?mibextid=wwXIfr",
+  accent: "#C2566E",
+  announce: "ទំនិញបញ្ចុះតម្លៃថ្មី · ឆាតកម្មង់បានភ្លាមៗ តាម Telegram និង Messenger",
+  showMarquee: false,
+  showFlash: true,
+  saleCount: 16,
+  saleHours: 4,
+  statsUrl: "",             // URL របស់ Worker ស្ថិតិ (ទទេ = មិនប្រើ)
+  showPromo: true,          // បង្ហាញផ្ទាំងផ្សព្វផ្សាយធំ
+  banners: [                // ផ្ទាំងផ្សព្វផ្សាយធំ 3 · target៖ all / sale / top / bottom / dress / set / acc ឬ តំណ https://...
+    { title: "បញ្ចុះតម្លៃពិសេស", sub: "ទំនិញថ្មី រៀងរាល់ 4 ម៉ោង", btn: "មើលទំនិញបញ្ចុះតម្លៃ", target: "sale", c1: "#E8445F", c2: "#8E1634" },
+    { title: "NEW COLLECTION", sub: "ខោអាវទាន់សម័យ ស្អាតៗ", btn: "ទិញឥឡូវ", target: "all", c1: "#2B2B2B", c2: "#7A3B4C" },
+    { title: "ឈុត & រ៉ូប", sub: "សម្រាប់គ្រប់ឱកាស", btn: "មើលរ៉ូប", target: "dress", c1: "#B98A3E", c2: "#5C3B1E" }
+  ]
+};
+// ===================================================================
+
+// ---------- Admin (ម្ចាស់ហាង) ----------
+// ពាក្យសម្ងាត់លំនាំដើម៖ admin123 (ត្រូវប្តូរ! មើលក្នុង Admin → ប្តូរពាក្យសម្ងាត់)
+const ADMIN_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+const ORIG_PRODUCTS = PRODUCTS.map((p) => ({ ...p }));
+let adminOn = false;
+try { adminOn = localStorage.getItem("adminOn") === "1"; } catch (e) {}
+let adminData = { edits: {}, hidden: [...HIDDEN], sale: { ...MANUAL_SALE }, stock: { ...STOCK }, settings: {}, added: [] };
+let adminImages = {};   // រូបដែលម្ចាស់ហាងដាក់ { លេខទំនិញ: dataURL } (លើឧបករណ៍នេះ)
+const photoOf = (n) => (adminOn && adminImages[n]) ? adminImages[n] : `Example${n}.jpg`;
+function loadAdminData() {
+  PRODUCTS.length = ORIG_PRODUCTS.length;      // លុបទំនិញថ្មីដែលបានបន្ថែមពីមុន (ការពារស្ទួន)
+  try {
+    const saved = JSON.parse(localStorage.getItem("adminData") || "null");
+    if (saved) adminData = { edits: saved.edits || {}, hidden: saved.hidden || [], sale: saved.sale || {}, stock: saved.stock || { ...STOCK }, settings: saved.settings || {}, added: saved.added || [] };
+  } catch (e) {}
+  try { adminImages = JSON.parse(localStorage.getItem("adminImages") || "{}") || {}; } catch (e) { adminImages = {}; }
+  Object.entries(adminData.edits).forEach(([k, v]) => { if (PRODUCTS[k]) Object.assign(PRODUCTS[k], v); });
+  (adminData.added || []).forEach((a) => PRODUCTS.push({ name: a.name, place: a.place, price: a.price }));
+}
+if (adminOn) loadAdminData();
+let settings = { ...SETTINGS, ...(adminOn ? adminData.settings : {}) };
+const rebuildSettings = () => { settings = { ...SETTINGS, ...(adminOn ? adminData.settings : {}) }; };
+const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+const hiddenSet = () => new Set(adminOn ? adminData.hidden : HIDDEN);
+const manualSale = () => (adminOn ? adminData.sale : MANUAL_SALE);
+
+
+// ---- មុខងារដែលមានតែក្នុងគេហទំព័រអតិថិជន (ទុកទទេនៅទីនេះ) ----
+function refreshSite() {}
+function applySettings() {}
+function renderPromo() {}
+let currentPeriod = 0;
+const periodKey = () => 0;
+function tickTimer() {}
+
+// ---------- Admin UI ----------
+async function sha256(text) {
+  if (!(window.crypto && crypto.subtle)) throw new Error("nosubtle");
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+const adminLogin = document.getElementById("admin-login");
+const adminSheet = document.getElementById("admin-app");
+const adminPass = document.getElementById("admin-pass");
+const adminErr = document.getElementById("admin-err");
+
+function openAdminLogin() {
+  adminErr.textContent = ""; adminPass.value = "";
+  adminLogin.style.display = "flex";
+  adminSheet.style.display = "none";
+  setTimeout(() => adminPass.focus(), 60);
+}
+async function tryAdminLogin() {
+  try {
+    if ((await sha256(adminPass.value)) !== ADMIN_HASH) { adminErr.textContent = "ពាក្យសម្ងាត់មិនត្រឹមត្រូវ"; return; }
+  } catch (e) { adminErr.textContent = "ត្រូវការគេហទំព័រ https ទើបចូលបាន"; return; }
+  try { localStorage.setItem("adminOn", "1"); } catch (e) {}
+  adminOn = true;
+  loadAdminData();
+  refreshSite();
+  openAdminPanel();
+}
+document.getElementById("admin-go").addEventListener("click", tryAdminLogin);
+adminPass.addEventListener("keydown", (e) => { if (e.key === "Enter") tryAdminLogin(); });
+
+function saveAdmin() {
+  const edits = {};
+  PRODUCTS.forEach((p, k) => {
+    if (k >= ORIG_PRODUCTS.length) return;
+    const o = ORIG_PRODUCTS[k], d = {};
+    ["name", "place", "price"].forEach((f) => { if (p[f] !== o[f]) d[f] = p[f]; });
+    if (Object.keys(d).length) edits[k] = d;
+  });
+  adminData.edits = edits;
+  adminData.added = PRODUCTS.slice(ORIG_PRODUCTS.length).map((p) => ({ name: p.name, place: p.place, price: p.price }));
+  try { localStorage.setItem("adminData", JSON.stringify(adminData)); } catch (e) {}
+  flashSaved();
+}
+
+
+
+function processImage(file, maxSide = 900) {
+  const draw = (img) => {
+    const w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+    if (!w || !h) throw new Error("size");
+    const k = Math.min(1, maxSide / Math.max(w, h));
+    const c = document.createElement("canvas");
+    c.width = Math.round(w * k); c.height = Math.round(h * k);
+    const ctx = c.getContext("2d");
+    ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+    const out = c.toDataURL("image/jpeg", 0.82);
+    if (!out || out.length < 100) throw new Error("canvas");
+    return out;
+  };
+  const load = (src) => new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => { try { res(draw(img)); } catch (e) { rej(e); } };
+    img.onerror = () => rej(new Error("img"));
+    img.src = src;
+  });
+  // ព្យាយាម blob URL មុន បើមិនបាន ប្រើ FileReader
+  const url = URL.createObjectURL(file);
+  return load(url).finally(() => URL.revokeObjectURL(url)).catch(() => new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => load(r.result).then(res, rej);
+    r.onerror = () => rej(new Error("read"));
+    r.readAsDataURL(file);
+  }));
+}
+function saveImages() {
+  try {
+    const s = JSON.stringify(adminImages);
+    localStorage.setItem("adminImages", s);
+    if (localStorage.getItem("adminImages") !== s) throw new Error("verify");
+    return true;
+  }
+  catch (e) { alert("កន្លែងផ្ទុកពេញ។ សូមទាញយករូប ហើយលុបរូបចាស់សិន។"); return false; }
+}
+function downloadPhoto(n) {
+  const data = adminImages[n];
+  if (!data) return;
+  const a = document.createElement("a");
+  a.href = data; a.download = `Example${n}.jpg`;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+let adFilter = "all";
+function adminRows(q) {
+  const hidden = new Set(adminData.hidden);
+  const needle = (q || "").trim().toLowerCase();
+  const out = PRODUCTS.map((p, k) => {
+    const n = k + 1;
+    const h = hidden.has(n), onSale = Number(adminData.sale[n]) > 0, out = adminData.stock[n] !== undefined && adminData.stock[n] !== "" && Number(adminData.stock[n]) === 0;
+    if (adFilter === "sale" && !onSale) return "";
+    if (adFilter === "hidden" && !h) return "";
+    if (adFilter === "out" && !out) return "";
+    if (needle && !(p.name.toLowerCase().includes(needle) || String(n) === needle)) return "";
+    return `<div class="ad-row${h ? " is-hidden" : ""}" data-n="${n}">
+      <div class="ad-side">
+        <div class="ad-thumbwrap"><img class="ad-thumb" src="${photoOf(n)}" alt="" decoding="async" onerror="this.style.display='none'" /></div>
+        <label class="ad-photo-btn">📷 ប្តូររូប<input type="file" accept="image/*" data-img="${n}" hidden></label>
+        ${adminImages[n] ? `<button type="button" class="ad-delimg" data-delimg="${n}">🗑 លុបរូប</button>` : ""}
+        ${n === PRODUCTS.length && n > ORIG_PRODUCTS.length ? `<button type="button" class="ad-del" data-del="${n}">🗑 លុប</button>` : ""}
+      </div>
+      <div class="ad-main">
+        <div class="ad-top"><span class="ad-num">${String(n).padStart(2, "0")}</span>
+          <label class="ad-hide"><input type="checkbox" data-f="hide" ${h ? "checked" : ""}> លាក់</label></div>
+        <input class="ad-input" data-f="name" value="${esc(p.name)}" placeholder="ឈ្មោះ" />
+        <input class="ad-input" data-f="place" value="${esc(p.place)}" placeholder="ទំហំ" />
+        <div class="ad-three">
+          <label>តម្លៃ ៛<input class="ad-input" data-f="price" type="number" inputmode="numeric" value="${p.price}" /></label>
+          <label>បញ្ចុះ ៛<input class="ad-input" data-f="sale" type="number" inputmode="numeric" value="${adminData.sale[n] || ""}" placeholder="—" /></label>
+          <label>ស្តុក<input class="ad-input" data-f="stock" type="number" min="0" inputmode="numeric" value="${adminData.stock[n] === undefined ? "" : adminData.stock[n]}" placeholder="∞" /></label>
+        </div>
+        <div class="ad-quick">
+          <span>បញ្ចុះលឿន៖</span>
+          <button type="button" class="ad-q" data-p="10">-10%</button>
+          <button type="button" class="ad-q" data-p="20">-20%</button>
+          <button type="button" class="ad-q" data-p="30">-30%</button>
+          <button type="button" class="ad-q clr" data-p="0">✕</button>
+          <button type="button" class="ad-q stk" data-p="soldout">អស់ស្តុក</button>
+        </div>
+      </div></div>`;
+  }).join("");
+  return out || `<div class="ad-empty">រកមិនឃើញទំនិញ</div>`;
+}
+
+let savedTimer;
+function flashSaved() {
+  const el = document.getElementById("ad-saved");
+  if (!el) return;
+  el.classList.add("show");
+  clearTimeout(savedTimer);
+  savedTimer = setTimeout(() => el.classList.remove("show"), 1200);
+}
+
+async function getStats() {
+  const url = settings.statsUrl;
+  if (url) {
+    const key = (() => { try { return localStorage.getItem("statsKey") || ""; } catch (e) { return ""; } })();
+    const r = await fetch(`${url}${url.includes("?") ? "&" : "?"}key=${encodeURIComponent(key)}`);
+    if (!r.ok) throw new Error(r.status === 401 ? "key" : "http " + r.status);
+    return { data: await r.json(), remote: true };
+  }
+  let d = { view: {}, order: {} };
+  try { d = JSON.parse(localStorage.getItem("stats") || "null") || d; } catch (e) {}
+  return { data: d, remote: false };
+}
+
+async function renderStats() {
+  const box = document.getElementById("st-body");
+  if (!box) return;
+  box.innerHTML = `<div class="ad-empty">កំពុងផ្ទុក...</div>`;
+  const keyUI = settings.statsUrl
+    ? `<label class="ad-field">Key សម្រាប់មើលស្ថិតិ<input class="ad-input" id="st-key" type="password" value="${esc((() => { try { return localStorage.getItem("statsKey") || ""; } catch (e) { return ""; } })())}" placeholder="ADMIN_KEY របស់ Worker" /></label>` : "";
+  let res;
+  try { res = await getStats(); }
+  catch (e) {
+    box.innerHTML = keyUI + `<div class="ad-empty">${e.message === "key" ? "Key មិនត្រឹមត្រូវ" : "ផ្ទុកស្ថិតិមិនបាន"}</div><button class="ad-btn" id="st-refresh" type="button">ព្យាយាមម្តងទៀត</button>`;
+    wireStats(box); return;
+  }
+  const { view = {}, order = {} } = res.data;
+  const sum = (o) => Object.values(o).reduce((a, b) => a + Number(b || 0), 0);
+  const tv = sum(view), to = sum(order);
+  const ids = new Set([...Object.keys(view), ...Object.keys(order)]);
+  const rows = [...ids].map((n) => ({ n: Number(n), v: Number(view[n] || 0), o: Number(order[n] || 0) }))
+    .filter((r) => PRODUCTS[r.n - 1])
+    .sort((a, b) => b.o - a.o || b.v - a.v).slice(0, 10);
+  const max = Math.max(1, ...rows.map((r) => Math.max(r.o, r.v)));
+  box.innerHTML = keyUI + `
+    <div class="st-cards">
+      <div class="st-card"><b>${tv}</b><span>មើលរូប</span></div>
+      <div class="st-card"><b>${to}</b><span>ចុចកម្មង់</span></div>
+      <div class="st-card"><b>${tv ? Math.round((to / tv) * 100) : 0}%</b><span>កម្មង់ / មើល</span></div>
+    </div>
+    <div class="ad-label">ទំនិញនិយម (កំពូល 10)</div>
+    ${rows.length ? rows.map((r, k) => `
+      <div class="st-row">
+        <span class="st-rank">${k + 1}</span>
+        <img class="st-thumb" src="${photoOf(r.n)}" alt="" onerror="this.style.visibility='hidden'" />
+        <div class="st-info">
+          <div class="st-name">${String(r.n).padStart(2, "0")} · ${esc(PRODUCTS[r.n - 1].name)}</div>
+          <div class="st-bar"><i style="width:${(r.o / max) * 100}%"></i></div>
+          <div class="st-meta">កម្មង់ ${r.o} · មើល ${r.v}</div>
+        </div>
+      </div>`).join("") : `<div class="ad-empty">មិនទាន់មានទិន្នន័យ</div>`}
+    <div class="ad-hint">${res.remote ? "ទិន្នន័យពីអតិថិជនទាំងអស់ (តាម Worker)" : "រាប់តែលើឧបករណ៍នេះប៉ុណ្ណោះ។ ដើម្បីឃើញពីអតិថិជនទាំងអស់ ត្រូវដាក់ URL Worker ក្នុងផ្ទាំង ហាង។"}</div>
+    <div class="ad-actions"><button class="ad-btn" id="st-refresh" type="button">ផ្ទុកថ្មី</button>${res.remote ? "" : `<button class="ad-btn danger" id="st-clear" type="button">លុបស្ថិតិ</button>`}</div>`;
+  wireStats(box);
+}
+function wireStats(box) {
+  const r = box.querySelector("#st-refresh"), c = box.querySelector("#st-clear"), k = box.querySelector("#st-key");
+  if (k) k.addEventListener("change", () => { try { localStorage.setItem("statsKey", k.value); } catch (e) {} renderStats(); });
+  if (r) r.addEventListener("click", renderStats);
+  if (c) c.addEventListener("click", () => { if (confirm("លុបស្ថិតិលើឧបករណ៍នេះ?")) { try { localStorage.removeItem("stats"); } catch (e) {} renderStats(); } });
+}
+
+function openAdminPanel() {
+  adminLogin.style.display = "none";
+  adminSheet.style.display = "";
+  const body = document.getElementById("ad-body");
+  body.innerHTML = `
+    <div class="ad-stats" id="ad-stats"></div>
+    <div class="ad-actions">
+      <button class="ad-btn danger" id="ad-logout" type="button">ចាកចេញ</button>
+    </div>
+    <div class="ad-note">ការកែនៅទីនេះមើលឃើញតែលើឧបករណ៍នេះប៉ុណ្ណោះ អតិថិជនមិនឃើញទេ។</div>
+    <details class="ad-pw"><summary>ប្តូរពាក្យសម្ងាត់</summary>
+      <input class="ad-input" id="ad-newpw" type="text" placeholder="ពាក្យសម្ងាត់ថ្មី" />
+      <button class="ad-btn" id="ad-mkhash" type="button">បង្កើតកូដ hash</button>
+      <textarea class="ad-hash" id="ad-hash" readonly style="display:none;height:60px"></textarea>
+    </details>
+    <div class="ad-tabs" id="ad-tabs">
+      <button class="ad-tab active" data-tab="products" type="button">ទំនិញ</button>
+      <button class="ad-tab" data-tab="design" type="button">រចនា</button>
+      <button class="ad-tab" data-tab="shop" type="button">ហាង</button>
+      <button class="ad-tab" data-tab="promo" type="button">ផ្សព្វផ្សាយ</button>
+      <button class="ad-tab" data-tab="stats" type="button">ស្ថិតិ</button>
+    </div>
+
+    <div class="ad-panel" data-tab="products">
+      <button class="ad-btn ad-addbtn" id="ad-add-open" type="button">＋ ផុសទំនិញថ្មី</button>
+      <div class="ad-addform" id="ad-addform" style="display:none">
+        <label class="ad-photo-pick" id="ad-photo-pick">
+          <input type="file" accept="image/*" id="ad-new-file" hidden />
+          <span id="ad-photo-label">📷 ជ្រើសរើសរូបទំនិញ</span>
+        </label>
+        <input class="ad-input" id="ad-new-name" placeholder="ឈ្មោះទំនិញ" />
+        <input class="ad-input" id="ad-new-place" placeholder="ទំហំ ឧ. ទំហំ S - XL ឬ Free Size" />
+        <input class="ad-input" id="ad-new-price" type="number" inputmode="numeric" placeholder="តម្លៃ (៛)" />
+        <div class="ad-addrow">
+          <button class="sheet-confirm" id="ad-add-save" type="button">ផុសទំនិញ</button>
+          <button class="sheet-cancel" id="ad-add-cancel" type="button">បោះបង់</button>
+        </div>
+      </div>
+      <input class="ad-input" id="ad-search" placeholder="ស្វែងរកឈ្មោះ ឬលេខ..." />
+      <div class="ad-filters" id="ad-filters">
+        <button type="button" class="on" data-flt="all">ទាំងអស់</button>
+        <button type="button" data-flt="sale">កំពុងបញ្ចុះ</button>
+        <button type="button" data-flt="hidden">ទំនិញលាក់</button>
+        <button type="button" data-flt="out">អស់ស្តុក</button>
+      </div>
+      <div class="ad-list" id="ad-list">${adminRows("")}</div>
+    </div>
+
+    <div class="ad-panel" data-tab="design" style="display:none">
+      <div class="ad-label">ពណ៌ទំព័រ</div>
+      <div class="ad-swatches" id="ad-swatches">
+        ${[["#C2566E","ផ្កាឈូក"],["#D6336C","ក្រហមផ្កាឈូក"],["#B98A3E","មាស"],["#3F7D5C","បៃតង"],["#2F6DB5","ខៀវ"],["#7B4FB8","ស្វាយ"],["#2B2B2B","ខ្មៅ"]]
+          .map(([c, n]) => `<button type="button" class="ad-sw${settings.accent.toLowerCase() === c.toLowerCase() ? " on" : ""}" data-c="${c}" style="background:${c}" aria-label="${n}"></button>`).join("")}
+      </div>
+      <label class="ad-field">ពណ៌ផ្ទាល់ខ្លួន<input type="color" data-s="accent" value="${esc(settings.accent)}" id="ad-color" /></label>
+      <label class="ad-field">ឈ្មោះហាង<input class="ad-input" data-s="name" value="${esc(settings.name)}" /></label>
+      <label class="ad-field">ខ្សែប្រកាសខាងលើបំផុត (ទទេ = លាក់)<input class="ad-input" data-s="announce" value="${esc(settings.announce)}" /></label>
+      <label class="ad-field">ស្លាកខាងលើចំណងជើង<input class="ad-input" data-s="eyebrow" value="${esc(settings.eyebrow)}" /></label>
+      <label class="ad-field">ពាក្យពណ៌នា<textarea class="ad-input" data-s="tagline">${esc(settings.tagline)}</textarea></label>
+      <label class="ad-field">អក្សររត់ (ញែកដោយ |)<input class="ad-input" data-s="marquee" value="${esc(settings.marquee)}" /></label>
+      <label class="ad-field">អក្សរអរគុណខាងក្រោម<input class="ad-input" data-s="thanks" value="${esc(settings.thanks)}" /></label>
+      <label class="ad-check"><input type="checkbox" data-s="showMarquee" ${settings.showMarquee ? "checked" : ""}> បង្ហាញបន្ទាត់អក្សររត់</label>
+      <label class="ad-check"><input type="checkbox" data-s="showFlash" ${settings.showFlash ? "checked" : ""}> បង្ហាញខ្សែបញ្ចុះតម្លៃ</label>
+    </div>
+
+    <div class="ad-panel" data-tab="promo" style="display:none">
+      <label class="ad-check"><input type="checkbox" data-s="showPromo" ${settings.showPromo === false ? "" : "checked"}> បង្ហាញផ្ទាំងផ្សព្វផ្សាយធំ</label>
+      ${(settings.banners || []).slice(0, 3).map((b, i) => `
+        <div class="bn-card" data-bi="${i}">
+          <div class="ad-label">ផ្ទាំងទី ${i + 1}</div>
+          <label class="ad-field">ចំណងជើង<input class="ad-input" data-bf="title" value="${esc(b.title)}" /></label>
+          <label class="ad-field">ពាក្យតូចខាងលើ<input class="ad-input" data-bf="sub" value="${esc(b.sub)}" /></label>
+          <label class="ad-field">អក្សរលើប៊ូតុង (ទទេ = គ្មានប៊ូតុង)<input class="ad-input" data-bf="btn" value="${esc(b.btn)}" /></label>
+          <label class="ad-field">ចុចហើយទៅ
+            <select class="ad-input" data-bf="target">
+              ${[["all", "ទំនិញទាំងអស់"], ["sale", "បញ្ចុះតម្លៃ"], ["top", "អាវ"], ["bottom", "ខោ"], ["dress", "សំពត់ · រ៉ូប"], ["set", "ឈុត"], ["acc", "គ្រឿងបន្ថែម"]]
+                .map(([k, n]) => `<option value="${k}"${b.target === k ? " selected" : ""}>${n}</option>`).join("")}
+              ${/^https?:/i.test(b.target) ? `<option value="${esc(b.target)}" selected>តំណ៖ ${esc(b.target)}</option>` : ""}
+            </select></label>
+          <label class="ad-field">ឬដាក់តំណ (https://...)<input class="ad-input" data-bf="link" placeholder="https://" value="${/^https?:/i.test(b.target) ? esc(b.target) : ""}" /></label>
+          <div class="ad-two">
+            <label>ពណ៌ទី 1<input type="color" data-bf="c1" value="${esc(b.c1 || "#333333")}" /></label>
+            <label>ពណ៌ទី 2<input type="color" data-bf="c2" value="${esc(b.c2 || "#666666")}" /></label>
+          </div>
+          <label class="ad-photo-btn bn-photo">📷 ដាក់រូបផ្ទាំងទី ${i + 1}<input type="file" accept="image/*" data-bimg="${i + 1}" hidden></label>
+          <div class="ad-hint">រូបដែលដាក់នៅទីនេះឃើញតែលើទូរស័ព្ទនេះ។ ដើម្បីឱ្យអតិថិជនឃើញ ត្រូវ upload ឯកសារឈ្មោះ Banner${i + 1}.jpg (ទំហំណែនាំ 1400×600) ទៅជាមួយ index.html</div>
+        </div>`).join("")}
+    </div>
+
+    <div class="ad-panel" data-tab="stats" style="display:none">
+      <div id="st-body"><div class="ad-empty">កំពុងផ្ទុក...</div></div>
+    </div>
+
+    <div class="ad-panel" data-tab="shop" style="display:none">
+      <label class="ad-field">លេខទូរស័ព្ទ<input class="ad-input" data-s="phone" inputmode="tel" value="${esc(settings.phone)}" /></label>
+      <label class="ad-field">Username Telegram (គ្មាន @)<input class="ad-input" data-s="telegram" value="${esc(settings.telegram)}" /></label>
+      <label class="ad-field">តំណ Messenger / Facebook<input class="ad-input" data-s="messenger" value="${esc(settings.messenger)}" /></label>
+      <label class="ad-field">ចំណងជើងខ្សែបញ្ចុះតម្លៃ<input class="ad-input" data-s="flashTitle" value="${esc(settings.flashTitle)}" /></label>
+      <label class="ad-field">ចំនួនទំនិញបញ្ចុះក្នុងមួយរង្វង់<input class="ad-input" data-s="saleCount" data-num="1" type="number" min="1" max="${PRODUCTS.length}" inputmode="numeric" value="${settings.saleCount}" /></label>
+      <label class="ad-field">ប្តូរទំនិញបញ្ចុះរៀងរាល់ (ម៉ោង)
+        <select class="ad-input" data-s="saleHours" data-num="1">
+          ${[1, 2, 3, 4, 6, 8, 12, 24].map((h) => `<option value="${h}"${settings.saleHours === h ? " selected" : ""}>${h} ម៉ោង</option>`).join("")}
+        </select></label>
+      <div class="ad-hint">ម៉ោងគិតតាមម៉ោងកម្ពុជា ចាប់ពី 00:00</div>
+      <label class="ad-field">URL Worker ស្ថិតិ (ទទេ = រាប់លើឧបករណ៍នេះប៉ុណ្ណោះ)<input class="ad-input" data-s="statsUrl" value="${esc(settings.statsUrl)}" placeholder="https://stats.xxx.workers.dev" /></label>
+    </div>`;
+  const list = document.getElementById("ad-list");
+  const stats = () => {
+    document.getElementById("ad-stats").textContent =
+      `${PRODUCTS.length} ទំនិញ · លាក់ ${adminData.hidden.length} · អស់ស្តុក ${Object.values(adminData.stock).filter((v) => v !== "" && Number(v) === 0).length} · បញ្ចុះដោយដៃ ${Object.keys(adminData.sale).length}`;
+  };
+  stats();
+
+  list.onchange = (e) => {
+    const el = e.target, row = el.closest(".ad-row");
+    if (!row) return;
+    const n = Number(row.dataset.n), f = el.dataset.f, p = PRODUCTS[n - 1];
+    if (el.dataset.img) {                         // ប្តូររូបទំនិញ
+      const file = el.files && el.files[0];
+      if (!file) return;
+      processImage(file).then((data) => {
+        adminImages[n] = data;
+        if (!saveImages()) { delete adminImages[n]; return; }
+        flashSaved(); refreshSite();
+        const keep = list.scrollTop;
+        list.innerHTML = adminRows(document.getElementById("ad-search").value);
+        list.scrollTop = keep;
+      }).catch((err) => alert("បើករូបមិនបាន (" + (err && err.message) + ")។ សូមសាកល្បងរូប JPG/PNG"));
+      return;
+    }
+    if (f === "name" || f === "place") p[f] = el.value.trim();
+    else if (f === "price") { p.price = Math.max(0, Math.round(Number(el.value) || 0)); }
+    else if (f === "stock") {
+      if (el.value === "") delete adminData.stock[n];
+      else adminData.stock[n] = Math.max(0, Math.round(Number(el.value) || 0));
+    }
+    else if (f === "sale") {
+      const v = Math.round(Number(el.value) || 0);
+      if (v > 0) adminData.sale[n] = v; else delete adminData.sale[n];
+    } else if (f === "hide") {
+      const set = new Set(adminData.hidden);
+      el.checked ? set.add(n) : set.delete(n);
+      adminData.hidden = [...set].sort((a, b) => a - b);
+      row.classList.toggle("is-hidden", el.checked);
+    }
+    saveAdmin(); refreshSite(); stats();
+  };
+  adFilter = "all";
+  const searchEl = document.getElementById("ad-search");
+  searchEl.addEventListener("input", (e) => { list.innerHTML = adminRows(e.target.value); });
+  document.querySelectorAll("#ad-filters button").forEach((b) => b.addEventListener("click", () => {
+    adFilter = b.dataset.flt;
+    document.querySelectorAll("#ad-filters button").forEach((x) => x.classList.toggle("on", x === b));
+    list.innerHTML = adminRows(searchEl.value);
+    list.scrollTop = 0;
+  }));
+  // បញ្ចុះតម្លៃលឿន (-10% / -20% / -30% / លុប)
+  list.addEventListener("click", (e) => {
+    const di = e.target.closest(".ad-delimg");
+    if (di) {
+      const n = Number(di.dataset.delimg);
+      // ចុចពីរដង (មិនប្រើ confirm ព្រោះកម្មវិធីខ្លះរារាំង)
+      if (di.dataset.sure !== "1") {
+        di.dataset.sure = "1"; di.textContent = "ចុចម្តងទៀត";
+        di.style.background = "#B8213F"; di.style.color = "#fff";
+        setTimeout(() => { if (di.isConnected) { di.dataset.sure = ""; di.textContent = "🗑 លុបរូប"; di.style.background = ""; di.style.color = ""; } }, 3000);
+        return;
+      }
+      delete adminImages[n];
+      saveImages(); flashSaved();
+      const keep = list.scrollTop;
+      list.innerHTML = adminRows(document.getElementById("ad-search").value);
+      list.scrollTop = keep;
+      return;
+    }
+    const del = e.target.closest(".ad-del");
+    if (del) {
+      const n = Number(del.dataset.del);
+      if (n !== PRODUCTS.length || n <= ORIG_PRODUCTS.length) return;
+      if (!confirm("លុបទំនិញនេះ?")) return;
+      PRODUCTS.pop();
+      delete adminImages[n]; delete adminData.stock[n]; delete adminData.sale[n];
+      adminData.hidden = adminData.hidden.filter((x) => x !== n);
+      saveImages(); saveAdmin(); refreshSite(); stats();
+      list.innerHTML = adminRows(document.getElementById("ad-search").value);
+      return;
+    }
+    const btn = e.target.closest(".ad-q");
+    if (!btn) return;
+    const row = btn.closest(".ad-row"), n = Number(row.dataset.n), price = PRODUCTS[n - 1].price;
+    if (btn.dataset.p === "soldout") {
+      adminData.stock[n] = 0;
+      row.querySelector('[data-f="stock"]').value = 0;
+      saveAdmin(); refreshSite(); stats();
+      return;
+    }
+    const pct = Number(btn.dataset.p);
+    const input = row.querySelector('[data-f="sale"]');
+    if (!pct) { delete adminData.sale[n]; input.value = ""; }
+    else {
+      let np = Math.round((price * (100 - pct)) / 100 / 1000) * 1000;
+      if (np >= price) np = price - 1000;
+      if (np <= 0) return;
+      adminData.sale[n] = np; input.value = np;
+    }
+    saveAdmin(); refreshSite(); stats();
+  });
+
+  // tabs
+  body.querySelectorAll(".ad-tab").forEach((t) => t.addEventListener("click", () => {
+    body.querySelectorAll(".ad-tab").forEach((x) => x.classList.toggle("active", x === t));
+    body.querySelectorAll(".ad-panel").forEach((pn) => (pn.style.display = pn.dataset.tab === t.dataset.tab ? "" : "none"));
+    if (t.dataset.tab === "stats") renderStats();
+  }));
+
+  // ផុសទំនិញថ្មី
+  let newPhoto = "";
+  const addForm = document.getElementById("ad-addform");
+  const resetAddForm = () => {
+    newPhoto = "";
+    ["ad-new-name", "ad-new-place", "ad-new-price"].forEach((id) => (document.getElementById(id).value = ""));
+    document.getElementById("ad-new-file").value = "";
+    const pick = document.getElementById("ad-photo-pick");
+    pick.style.backgroundImage = ""; pick.classList.remove("has");
+    document.getElementById("ad-photo-label").textContent = "📷 ជ្រើសរើសរូបទំនិញ";
+  };
+  document.getElementById("ad-add-open").addEventListener("click", () => {
+    addForm.style.display = addForm.style.display === "none" ? "" : "none";
+  });
+  document.getElementById("ad-add-cancel").addEventListener("click", () => { resetAddForm(); addForm.style.display = "none"; });
+  document.getElementById("ad-new-file").addEventListener("change", (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    processImage(f).then((data) => {
+      newPhoto = data;
+      const pick = document.getElementById("ad-photo-pick");
+      pick.style.backgroundImage = `url("${data}")`; pick.classList.add("has");
+      document.getElementById("ad-photo-label").textContent = "📷 ប្តូររូប";
+    }).catch((err) => alert("បើករូបមិនបាន (" + (err && err.message) + ")។ សូមសាកល្បងរូប JPG/PNG"));
+  });
+  document.getElementById("ad-add-save").addEventListener("click", () => {
+    const name = document.getElementById("ad-new-name").value.trim();
+    const place = document.getElementById("ad-new-place").value.trim() || "Free Size";
+    const price = Math.round(Number(document.getElementById("ad-new-price").value) || 0);
+    if (!name || price <= 0) { alert("សូមបំពេញឈ្មោះ និងតម្លៃ"); return; }
+    PRODUCTS.push({ name, place, price });
+    const n = PRODUCTS.length;
+    if (newPhoto) {
+      adminImages[n] = newPhoto;
+      if (!saveImages()) delete adminImages[n];
+    }
+    saveAdmin(); refreshSite(); stats();
+    resetAddForm(); addForm.style.display = "none";
+    searchEl.value = "";
+    adFilter = "all";
+    document.querySelectorAll("#ad-filters button").forEach((x) => x.classList.toggle("on", x.dataset.flt === "all"));
+    list.innerHTML = adminRows("");
+    list.lastElementChild && list.lastElementChild.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  // settings (live)
+  const commitSetting = (k) => {
+    rebuildSettings(); saveAdmin(); applySettings();
+    if (k === "saleCount" || k === "saleHours") { currentPeriod = periodKey(); refreshSite(); tickTimer(); }
+  };
+  body.addEventListener("input", (e) => {
+    const el = e.target, k = el.dataset && el.dataset.s;
+    if (!k) return;
+    let v;
+    if (el.type === "checkbox") v = el.checked;
+    else if (el.dataset.num) { v = Math.round(Number(el.value)); if (!(v >= 1)) return; if (k === "saleCount") v = Math.min(v, PRODUCTS.length); }
+    else v = el.value;
+    adminData.settings[k] = v;
+    if (k === "accent") body.querySelectorAll(".ad-sw").forEach((b) => b.classList.toggle("on", b.dataset.c.toLowerCase() === String(v).toLowerCase()));
+    commitSetting(k);
+  });
+  body.querySelectorAll(".ad-sw").forEach((b) => b.addEventListener("click", () => {
+    adminData.settings.accent = b.dataset.c;
+    document.getElementById("ad-color").value = b.dataset.c;
+    body.querySelectorAll(".ad-sw").forEach((x) => x.classList.toggle("on", x === b));
+    commitSetting("accent");
+  }));
+
+  document.getElementById("ad-logout").addEventListener("click", () => {
+    try { localStorage.removeItem("adminOn"); } catch (e) {}
+    location.reload();
+  });
+  document.getElementById("ad-mkhash").addEventListener("click", async () => {
+    const v = document.getElementById("ad-newpw").value;
+    const out = document.getElementById("ad-hash");
+    if (!v) return;
+    try {
+      out.value = `const ADMIN_HASH = "${await sha256(v)}";`;
+      out.style.display = "block"; out.select();
+    } catch (e) { out.value = "ត្រូវការ https"; out.style.display = "block"; }
+  });
+  // ផ្ទាំងផ្សព្វផ្សាយ
+  const promoPanel = body.querySelector('.ad-panel[data-tab="promo"]');
+  const editBanner = (i, f, v) => {
+    const arr = (adminData.settings.banners || settings.banners).map((b) => ({ ...b }));
+    if (!arr[i]) return;
+    if (f === "link") { if (/^https?:/i.test(v)) arr[i].target = v; else if (/^https?:/i.test(arr[i].target)) arr[i].target = "all"; }
+    else arr[i][f] = v;
+    adminData.settings.banners = arr;
+    rebuildSettings(); saveAdmin(); renderPromo();
+  };
+  promoPanel.addEventListener("input", (e) => {
+    const el = e.target, card = el.closest(".bn-card");
+    if (card && el.dataset.bf && el.dataset.bf !== "target") editBanner(Number(card.dataset.bi), el.dataset.bf, el.value);
+  });
+  promoPanel.addEventListener("change", (e) => {
+    const el = e.target, card = el.closest(".bn-card");
+    if (!card) return;
+    if (el.dataset.bf === "target") { editBanner(Number(card.dataset.bi), "target", el.value); const lk = card.querySelector('[data-bf="link"]'); if (lk) lk.value = ""; }
+    if (el.dataset.bimg) {
+      const f = el.files && el.files[0];
+      if (!f) return;
+      processImage(f, 1600).then((data) => {
+        adminImages["b" + el.dataset.bimg] = data;
+        if (!saveImages()) { delete adminImages["b" + el.dataset.bimg]; return; }
+        flashSaved(); renderPromo();
+      }).catch((err) => alert("បើករូបមិនបាន (" + (err && err.message) + ")។ សូមសាកល្បងរូប JPG/PNG"));
+    }
+  });
+  adminSheet.classList.add("open");
+}
+
+
+// ---- ចាប់ផ្តើម ----
+if (adminOn) openAdminPanel(); else openAdminLogin();
+// ការពារ zoom លើទូរស័ព្ទ
+["gesturestart", "gesturechange", "gestureend"].forEach((ev) => document.addEventListener(ev, (e) => e.preventDefault()));
+</script>
+</body>
+</html>
